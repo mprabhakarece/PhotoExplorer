@@ -1,0 +1,783 @@
+C:/libs/dlib/dlib/gui_widgets/style.h
+C:/libs/dlib/dlib/gui_widgets/../algs.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/string
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/yvals_core.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vcruntime.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/sal.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/concurrencysal.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vadefs.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xkeycheck.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xstring
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_sanitizer_annotate_container.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_string_view.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/iosfwd
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/yvals.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/crtdbg.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vcruntime_new_debug.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vcruntime_new.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/crtdefs.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/use_ansi.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cstdio
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/stdio.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wstdio.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_stdio_config.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cstring
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/string.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_memory.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_memcpy_s.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/errno.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vcruntime_string.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wstring.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cwchar
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/wchar.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wconio.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wctype.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wdirect.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wio.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_share.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wprocess.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wstdlib.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_wtime.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/sys/stat.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/sys/types.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xtr1common
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xutility
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_iter_core.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/utility
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/initializer_list
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cstddef
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/stddef.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/type_traits
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cstdint
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/stdint.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/climits
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/limits.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cstdlib
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/math.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_math.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/stdlib.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_malloc.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_search.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xmemory
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/limits
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cfloat
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/float.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/intrin0.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/intrin0.inl.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/new
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/exception
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/malloc.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vcruntime_exception.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/eh.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_terminate.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xatomic.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xpolymorphic_allocator.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/tuple
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cctype
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/ctype.h
+C:/libs/dlib/dlib/platform.h
+C:/libs/dlib/dlib/windows_magic.h
+C:/libs/dlib/dlib/platform.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/algorithm
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_heap_algorithms.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_minmax.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cmath
+C:/libs/dlib/dlib/assert.h
+C:/libs/dlib/dlib/config.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/sstream
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/istream
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_ostream.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ios
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xlocnum
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/iterator
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/streambuf
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xiosbase
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/share.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/system_error
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_system_error_abi.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cerrno
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/stdexcept
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xcall_once.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xerrc.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/atomic
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xthreads.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_threads_core.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xtimec.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ctime
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/time.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xlocale
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/memory
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/typeinfo
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vcruntime_typeinfo.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xfacet
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xlocinfo
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_xlocinfo_types.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/clocale
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/locale.h
+C:/libs/dlib/dlib/error.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/iostream
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ostream
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/cassert
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/assert.h
+C:/libs/dlib/dlib/stack_trace.h
+C:/libs/dlib/dlib/assert.h
+C:/libs/dlib/dlib/noncopyable.h
+C:/libs/dlib/dlib/enable_if.h
+C:/libs/dlib/dlib/uintn.h
+C:/libs/dlib/dlib/numeric_constants.h
+C:/libs/dlib/dlib/memory_manager_stateless/memory_manager_stateless_kernel_1.h
+C:/libs/dlib/dlib/memory_manager_stateless/memory_manager_stateless_kernel_abstract.h
+C:/libs/dlib/dlib/type_traits.h
+C:/libs/dlib/dlib/gui_widgets/style_abstract.h
+C:/libs/dlib/dlib/gui_widgets/../gui_core.h
+C:/libs/dlib/dlib/platform.h
+C:/libs/dlib/dlib/gui_core/windows.h
+C:/libs/dlib/dlib/gui_core/gui_core_kernel_1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/windows.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/winapifamily.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/winpackagefamily.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/sdkddkver.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/excpt.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/stdarg.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/windef.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/minwindef.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/specstrings.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/specstrings_strict.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/specstrings_undef.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/driverspecs.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/sdv_driverspecs.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winnt.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/kernelspecs.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/basetsd.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/guiddef.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/pshpack4.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack4.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/pshpack4.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/pshpack2.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/pshpack2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/apiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/ktmtypes.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winbase.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/apisetcconv.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/minwinbase.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/apiquery2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/processenv.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/fileapifromapp.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/fileapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/debugapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/utilapiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/handleapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/errhandlingapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/fibersapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/namedpipeapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/profileapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/heapapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/ioapiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/synchapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/interlockedapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/processthreadsapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/sysinfoapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/memoryapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/enclaveapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/threadpoollegacyapiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/threadpoolapiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/jobapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/jobapi2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/wow64apiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/libloaderapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/securitybaseapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/namespaceapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/systemtopologyapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/processtopologyapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/securityappcontainer.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/realtimeapiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/winerror.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/timezoneapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/wingdi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack4.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack4.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winuser.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/tvout.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winnls.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/datetimeapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/stringapiset.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winnls.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/wincon.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/wincontypes.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/consoleapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/consoleapi2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/consoleapi3.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winver.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/verrsrc.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winreg.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/reason.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winnetwk.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/wnnc.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/cderr.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/dde.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/ddeml.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/dlgs.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/lzexpand.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsystem.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mciapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmiscapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmiscapi2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/playsoundapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmeapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/timeapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/joystickapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mmsyscom.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/nb30.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/rpc.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/rpcdce.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/rpcdcep.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/rpcnsi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/rpcnterr.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/rpcasync.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/shellapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winperf.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winsock.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/inaddr.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/wincrypt.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/bcrypt.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/ncrypt.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/dpapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winefs.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winscard.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/wtypes.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/rpcndr.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/rpcnsip.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/rpcsal.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/wtypesbase.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/shared/guiddef.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winioctl.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/winsmcrd.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winspool.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/prsht.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/ole2.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/objbase.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/combaseapi.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/unknwnbase.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/objidlbase.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/guiddef.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/cguid.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/coml2api.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/objidl.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um/unknwn.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/propidlbase.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um/oaidl.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/urlmon.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um/oleidl.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um/servprov.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/um/msxml.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/propidl.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/oleauto.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack8.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/commdlg.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/prsht.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/stralign.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/winsvc.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mcx.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/imm.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/ime_cmodes.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/windowsx.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/commctrl.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/prsht.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/pshpack1.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//shared/poppack.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/dpa_dsa.h
+C:/libs/dlib/dlib/gui_core/gui_core_kernel_abstract.h
+C:/libs/dlib/dlib/gui_core/../algs.h
+C:/libs/dlib/dlib/gui_core/../sync_extension.h
+C:/libs/dlib/dlib/sync_extension/sync_extension_kernel_1.h
+C:/libs/dlib/dlib/sync_extension/../threads.h
+C:/libs/dlib/dlib/threads/threads_kernel.h
+C:/libs/dlib/dlib/threads/../platform.h
+C:/libs/dlib/dlib/threads/windows.h
+C:/libs/dlib/dlib/threads/threads_kernel_1.h
+C:/libs/dlib/dlib/threads/threads_kernel_abstract.h
+C:/libs/dlib/dlib/threads/../algs.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/condition_variable
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_chrono.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ratio
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/mutex
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/thread
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/process.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/corecrt_startup.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.22621.0/ucrt/math.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vcruntime_startup.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/chrono
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xfilesystem_abi.h
+C:/libs/dlib/dlib/threads/threads_kernel_shared.h
+C:/libs/dlib/dlib/threads/auto_mutex_extension.h
+C:/libs/dlib/dlib/threads/threads_kernel.h
+C:/libs/dlib/dlib/threads/rmutex_extension.h
+C:/libs/dlib/dlib/threads/threads_kernel.h
+C:/libs/dlib/dlib/threads/rmutex_extension_abstract.h
+C:/libs/dlib/dlib/threads/read_write_mutex_extension.h
+C:/libs/dlib/dlib/threads/threads_kernel.h
+C:/libs/dlib/dlib/threads/read_write_mutex_extension_abstract.h
+C:/libs/dlib/dlib/threads/auto_mutex_extension_abstract.h
+C:/libs/dlib/dlib/threads/../binary_search_tree.h
+C:/libs/dlib/dlib/binary_search_tree/binary_search_tree_kernel_1.h
+C:/libs/dlib/dlib/binary_search_tree/binary_search_tree_kernel_abstract.h
+C:/libs/dlib/dlib/binary_search_tree/../algs.h
+C:/libs/dlib/dlib/binary_search_tree/../interfaces/map_pair.h
+C:/libs/dlib/dlib/binary_search_tree/../interfaces/enumerable.h
+C:/libs/dlib/dlib/binary_search_tree/../interfaces/remover.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/functional
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/unordered_map
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xhash
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/list
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/vector
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_bit_utils.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xbit_ops.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xnode_handle.h
+C:/libs/dlib/dlib/binary_search_tree/../serialize.h
+C:/libs/dlib/dlib/algs.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/iomanip
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xlocmon
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xloctime
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/fstream
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/__msvc_filebuf.hpp
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/forward_list
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/array
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/deque
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/complex
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ymath.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/emmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xmmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/mmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/map
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/xtree
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/set
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/unordered_set
+C:/libs/dlib/dlib/unicode.h
+C:/libs/dlib/dlib/unicode/unicode.h
+C:/libs/dlib/dlib/unicode/../algs.h
+C:/libs/dlib/dlib/unicode/unicode_abstract.h
+C:/libs/dlib/dlib/byte_orderer.h
+C:/libs/dlib/dlib/byte_orderer/byte_orderer_kernel_1.h
+C:/libs/dlib/dlib/byte_orderer/byte_orderer_kernel_abstract.h
+C:/libs/dlib/dlib/byte_orderer/../algs.h
+C:/libs/dlib/dlib/float_details.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/vectorstream.h
+C:/libs/dlib/dlib/vectorstream/vectorstream.h
+C:/libs/dlib/dlib/vectorstream/vectorstream_abstract.h
+C:/libs/dlib/dlib/vectorstream/../algs.h
+C:/libs/dlib/dlib/vectorstream/unserialize.h
+C:/libs/dlib/dlib/vectorstream/unserialize_abstract.h
+C:/libs/dlib/dlib/vectorstream/../serialize.h
+C:/libs/dlib/dlib/vectorstream/../algs.h
+C:/libs/dlib/dlib/binary_search_tree/binary_search_tree_kernel_2.h
+C:/libs/dlib/dlib/binary_search_tree/binary_search_tree_kernel_abstract.h
+C:/libs/dlib/dlib/binary_search_tree/../algs.h
+C:/libs/dlib/dlib/binary_search_tree/binary_search_tree_kernel_c.h
+C:/libs/dlib/dlib/binary_search_tree/binary_search_tree_kernel_abstract.h
+C:/libs/dlib/dlib/binary_search_tree/../algs.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/threads/../member_function_pointer.h
+C:/libs/dlib/dlib/member_function_pointer/member_function_pointer_kernel_1.h
+C:/libs/dlib/dlib/member_function_pointer/../algs.h
+C:/libs/dlib/dlib/member_function_pointer/member_function_pointer_kernel_abstract.h
+C:/libs/dlib/dlib/member_function_pointer/make_mfp.h
+C:/libs/dlib/dlib/member_function_pointer/make_mfp_abstract.h
+C:/libs/dlib/dlib/threads/../memory_manager.h
+C:/libs/dlib/dlib/memory_manager/memory_manager_kernel_1.h
+C:/libs/dlib/dlib/memory_manager/../algs.h
+C:/libs/dlib/dlib/memory_manager/memory_manager_kernel_abstract.h
+C:/libs/dlib/dlib/memory_manager/memory_manager_kernel_2.h
+C:/libs/dlib/dlib/memory_manager/../algs.h
+C:/libs/dlib/dlib/memory_manager/memory_manager_kernel_abstract.h
+C:/libs/dlib/dlib/memory_manager/memory_manager_kernel_3.h
+C:/libs/dlib/dlib/memory_manager/../algs.h
+C:/libs/dlib/dlib/memory_manager/memory_manager_kernel_abstract.h
+C:/libs/dlib/dlib/threads/../queue.h
+C:/libs/dlib/dlib/queue/queue_kernel_1.h
+C:/libs/dlib/dlib/queue/queue_kernel_abstract.h
+C:/libs/dlib/dlib/queue/../algs.h
+C:/libs/dlib/dlib/queue/queue_kernel_2.h
+C:/libs/dlib/dlib/queue/queue_kernel_abstract.h
+C:/libs/dlib/dlib/queue/../algs.h
+C:/libs/dlib/dlib/queue/queue_kernel_c.h
+C:/libs/dlib/dlib/queue/queue_kernel_abstract.h
+C:/libs/dlib/dlib/queue/../algs.h
+C:/libs/dlib/dlib/queue/queue_sort_1.h
+C:/libs/dlib/dlib/queue/queue_sort_abstract.h
+C:/libs/dlib/dlib/queue/../algs.h
+C:/libs/dlib/dlib/queue/../sort.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/threads/../set.h
+C:/libs/dlib/dlib/set/set_kernel_1.h
+C:/libs/dlib/dlib/set/set_kernel_abstract.h
+C:/libs/dlib/dlib/set/../algs.h
+C:/libs/dlib/dlib/set/set_kernel_c.h
+C:/libs/dlib/dlib/set/set_kernel_abstract.h
+C:/libs/dlib/dlib/set/../algs.h
+C:/libs/dlib/dlib/set/set_compare_1.h
+C:/libs/dlib/dlib/set/set_compare_abstract.h
+C:/libs/dlib/dlib/set/../algs.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/threads/../test_for_odr_violations.h
+C:/libs/dlib/dlib/config.h
+C:/libs/dlib/dlib/threads/auto_unlock_extension.h
+C:/libs/dlib/dlib/threads/auto_unlock_extension_abstract.h
+C:/libs/dlib/dlib/threads/create_new_thread_extension.h
+C:/libs/dlib/dlib/threads/threads_kernel_abstract.h
+C:/libs/dlib/dlib/threads/create_new_thread_extension_abstract.h
+C:/libs/dlib/dlib/threads/../threads.h
+C:/libs/dlib/dlib/threads/multithreaded_object_extension.h
+C:/libs/dlib/dlib/threads/multithreaded_object_extension_abstract.h
+C:/libs/dlib/dlib/threads/rsignaler_extension.h
+C:/libs/dlib/dlib/threads/rsignaler_extension_abstract.h
+C:/libs/dlib/dlib/threads/../algs.h
+C:/libs/dlib/dlib/threads/../map.h
+C:/libs/dlib/dlib/map/map_kernel_1.h
+C:/libs/dlib/dlib/map/map_kernel_abstract.h
+C:/libs/dlib/dlib/map/../algs.h
+C:/libs/dlib/dlib/map/map_kernel_c.h
+C:/libs/dlib/dlib/map/map_kernel_abstract.h
+C:/libs/dlib/dlib/map/../algs.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/threads/threaded_object_extension.h
+C:/libs/dlib/dlib/threads/threaded_object_extension_abstract.h
+C:/libs/dlib/dlib/threads/../algs.h
+C:/libs/dlib/dlib/threads/thread_specific_data_extension.h
+C:/libs/dlib/dlib/threads/thread_specific_data_extension_abstract.h
+C:/libs/dlib/dlib/threads/threads_kernel_abstract.h
+C:/libs/dlib/dlib/threads/thread_function_extension.h
+C:/libs/dlib/dlib/threads/thread_function_extension_abstract.h
+C:/libs/dlib/dlib/threads/thread_pool_extension.h
+C:/libs/dlib/dlib/threads/thread_pool_extension_abstract.h
+C:/libs/dlib/dlib/threads/../bound_function_pointer.h
+C:/libs/dlib/dlib/bound_function_pointer/bound_function_pointer_kernel_1.h
+C:/libs/dlib/dlib/bound_function_pointer/../algs.h
+C:/libs/dlib/dlib/bound_function_pointer/bound_function_pointer_kernel_abstract.h
+C:/libs/dlib/dlib/threads/../array.h
+C:/libs/dlib/dlib/array/array_kernel.h
+C:/libs/dlib/dlib/array/array_kernel_abstract.h
+C:/libs/dlib/dlib/array/../algs.h
+C:/libs/dlib/dlib/array/../is_kind.h
+C:/libs/dlib/dlib/array/array_tools.h
+C:/libs/dlib/dlib/array/array_tools_abstract.h
+C:/libs/dlib/dlib/threads/parallel_for_extension.h
+C:/libs/dlib/dlib/threads/parallel_for_extension_abstract.h
+C:/libs/dlib/dlib/threads/../console_progress_indicator.h
+C:/libs/dlib/dlib/threads/async.h
+C:/libs/dlib/dlib/threads/async_abstract.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/future
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ppltasks.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/pplwin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/pplinterface.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ppltaskscheduler.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/crtdefs.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/pplcancellation_token.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/intrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/setjmp.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/immintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/wmmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/nmmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/smmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/tmmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/pmmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/zmmintrin.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/ammintrin.h
+C:/libs/dlib/dlib/sync_extension/../algs.h
+C:/libs/dlib/dlib/sync_extension/sync_extension_kernel_abstract.h
+C:/libs/dlib/dlib/gui_core/../threads.h
+C:/libs/dlib/dlib/gui_core/../geometry/rectangle.h
+C:/libs/dlib/dlib/geometry/rectangle_abstract.h
+C:/libs/dlib/dlib/geometry/../algs.h
+C:/libs/dlib/dlib/geometry/vector.h
+C:/libs/dlib/dlib/geometry/vector_abstract.h
+C:/libs/dlib/dlib/geometry/../algs.h
+C:/libs/dlib/dlib/geometry/../matrix/matrix.h
+C:/libs/dlib/dlib/matrix/matrix_exp.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/matrix_fwd.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/matrix_exp_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_abstract.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/matrix_data_layout.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/matrix_data_layout_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_assign_fwd.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/matrix_op.h
+C:/libs/dlib/dlib/geometry/../image_processing/generic_image.h
+C:/libs/dlib/dlib/image_processing/../pixel.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/gui_core/../smart_pointers/shared_ptr_thread_safe.h
+C:/libs/dlib/dlib/smart_pointers/../algs.h
+C:/libs/dlib/dlib/smart_pointers/shared_ptr_thread_safe_abstract.h
+C:/libs/dlib/dlib/gui_widgets/canvas_drawing.h
+C:/libs/dlib/dlib/gui_widgets/canvas_drawing_abstract.h
+C:/libs/dlib/dlib/gui_widgets/../algs.h
+C:/libs/dlib/dlib/gui_widgets/../array2d.h
+C:/libs/dlib/dlib/array2d/array2d_kernel.h
+C:/libs/dlib/dlib/array2d/array2d_kernel_abstract.h
+C:/libs/dlib/dlib/array2d/../algs.h
+C:/libs/dlib/dlib/array2d/serialize_pixel_overloads.h
+C:/libs/dlib/dlib/array2d/array2d_generic_image.h
+C:/libs/dlib/dlib/gui_widgets/../image_transforms/assign_image.h
+C:/libs/dlib/dlib/image_transforms/assign_image_abstract.h
+C:/libs/dlib/dlib/image_transforms/../statistics.h
+C:/libs/dlib/dlib/statistics/statistics.h
+C:/libs/dlib/dlib/statistics/statistics_abstract.h
+C:/libs/dlib/dlib/statistics/../algs.h
+C:/libs/dlib/dlib/statistics/../matrix.h
+C:/libs/dlib/dlib/matrix/matrix_utilities.h
+C:/libs/dlib/dlib/matrix/matrix_utilities_abstract.h
+C:/libs/dlib/dlib/matrix/../stl_checked.h
+C:/libs/dlib/dlib/stl_checked/std_vector_c.h
+C:/libs/dlib/dlib/stl_checked/std_vector_c_abstract.h
+C:/libs/dlib/dlib/matrix/../std_allocator.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/matrix/matrix_expressions.h
+C:/libs/dlib/dlib/matrix/matrix_math_functions.h
+C:/libs/dlib/dlib/matrix/matrix_math_functions_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_utilities.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/../general_hash/random_hashing.h
+C:/libs/dlib/dlib/general_hash/random_hashing_abstract.h
+C:/libs/dlib/dlib/general_hash/murmur_hash3.h
+C:/libs/dlib/dlib/general_hash/murmur_hash3_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_mat.h
+C:/libs/dlib/dlib/matrix/matrix_mat_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_subexp.h
+C:/libs/dlib/dlib/matrix/matrix_subexp_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_assign.h
+C:/libs/dlib/dlib/matrix/matrix_default_mul.h
+C:/libs/dlib/dlib/matrix/matrix_conj_trans.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/matrix_la.h
+C:/libs/dlib/dlib/matrix/matrix_la_abstract.h
+C:/libs/dlib/dlib/matrix/../sparse_vector.h
+C:/libs/dlib/dlib/svm/sparse_vector.h
+C:/libs/dlib/dlib/svm/sparse_vector_abstract.h
+C:/libs/dlib/dlib/svm/../algs.h
+C:/libs/dlib/dlib/svm/../graph_utils/edge_list_graphs.h
+C:/libs/dlib/dlib/graph_utils/edge_list_graphs_abstract.h
+C:/libs/dlib/dlib/graph_utils/../string.h
+C:/libs/dlib/dlib/string/string.h
+C:/libs/dlib/dlib/string/string_abstract.h
+C:/libs/dlib/dlib/string/../algs.h
+C:/libs/dlib/dlib/graph_utils/../rand.h
+C:/libs/dlib/dlib/rand/rand_kernel_1.h
+C:/libs/dlib/dlib/rand/../algs.h
+C:/libs/dlib/dlib/rand/rand_kernel_abstract.h
+C:/libs/dlib/dlib/rand/mersenne_twister.h
+C:/libs/dlib/dlib/graph_utils/sample_pair.h
+C:/libs/dlib/dlib/graph_utils/sample_pair_abstract.h
+C:/libs/dlib/dlib/graph_utils/ordered_sample_pair.h
+C:/libs/dlib/dlib/graph_utils/ordered_sample_pair_abstract.h
+C:/libs/dlib/dlib/svm/../matrix.h
+C:/libs/dlib/dlib/matrix/../optimization/optimization_line_search.h
+C:/libs/dlib/dlib/optimization/../matrix.h
+C:/libs/dlib/dlib/optimization/../algs.h
+C:/libs/dlib/dlib/optimization/optimization_line_search_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_lu.h
+C:/libs/dlib/dlib/matrix/matrix_trsm.h
+C:/libs/dlib/dlib/matrix/lapack/fortran_id.h
+C:/libs/dlib/dlib/matrix/cblas_constants.h
+C:/libs/dlib/dlib/matrix/matrix_qr.h
+C:/libs/dlib/dlib/matrix/matrix_cholesky.h
+C:/libs/dlib/dlib/matrix/matrix_eigenvalue.h
+C:/libs/dlib/dlib/matrix/../threads.h
+C:/libs/dlib/dlib/matrix/symmetric_matrix_cache.h
+C:/libs/dlib/dlib/matrix/symmetric_matrix_cache_abstract.h
+C:/libs/dlib/dlib/matrix/../matrix.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/matrix_conv.h
+C:/libs/dlib/dlib/matrix/matrix_conv_abstract.h
+C:/libs/dlib/dlib/matrix/matrix_fft.h
+C:/libs/dlib/dlib/matrix/matrix_fft_abstract.h
+C:/libs/dlib/dlib/matrix/../hash.h
+C:/libs/dlib/dlib/general_hash/hash.h
+C:/libs/dlib/dlib/general_hash/hash_abstract.h
+C:/libs/dlib/dlib/general_hash/../algs.h
+C:/libs/dlib/dlib/general_hash/count_bits.h
+C:/libs/dlib/dlib/general_hash/../algs.h
+C:/libs/dlib/dlib/matrix/../algs.h
+C:/libs/dlib/dlib/matrix/../math.h
+C:/libs/dlib/dlib/math/bessel.h
+C:/libs/dlib/dlib/math/details/bessel.h
+C:/libs/dlib/dlib/math/windows.h
+C:/libs/dlib/dlib/matrix/../fft/fft.h
+C:/libs/dlib/dlib/fft/fft_size.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/numeric
+C:/libs/dlib/dlib/matrix/../fft/fft_stl.h
+C:/libs/dlib/dlib/matrix/matrix_read_from_istream.h
+C:/libs/dlib/dlib/matrix/matrix_generic_image.h
+C:/libs/dlib/dlib/statistics/dpca.h
+C:/libs/dlib/dlib/statistics/dpca_abstract.h
+C:/libs/dlib/dlib/statistics/../algs.h
+C:/libs/dlib/dlib/statistics/random_subset_selector.h
+C:/libs/dlib/dlib/statistics/random_subset_selector_abstract.h
+C:/libs/dlib/dlib/statistics/../algs.h
+C:/libs/dlib/dlib/statistics/image_feature_sampling.h
+C:/libs/dlib/dlib/statistics/image_feature_sampling_abstract.h
+C:/libs/dlib/dlib/statistics/../statistics.h
+C:/libs/dlib/dlib/statistics/sammon.h
+C:/libs/dlib/dlib/statistics/sammon_abstract.h
+C:/libs/dlib/dlib/statistics/../algs.h
+C:/libs/dlib/dlib/statistics/cca.h
+C:/libs/dlib/dlib/statistics/cca_abstract.h
+C:/libs/dlib/dlib/statistics/../algs.h
+C:/libs/dlib/dlib/statistics/average_precision.h
+C:/libs/dlib/dlib/statistics/average_precision_abstract.h
+C:/libs/dlib/dlib/statistics/vector_normalizer_frobmetric.h
+C:/libs/dlib/dlib/statistics/vector_normalizer_frobmetric_abstract.h
+C:/libs/dlib/dlib/statistics/../optimization.h
+C:/libs/dlib/dlib/optimization/optimization.h
+C:/libs/dlib/dlib/optimization/optimization_abstract.h
+C:/libs/dlib/dlib/optimization/optimization_search_strategies.h
+C:/libs/dlib/dlib/optimization/../algs.h
+C:/libs/dlib/dlib/optimization/optimization_search_strategies_abstract.h
+C:/libs/dlib/dlib/optimization/../sequence.h
+C:/libs/dlib/dlib/sequence/sequence_kernel_1.h
+C:/libs/dlib/dlib/sequence/sequence_kernel_abstract.h
+C:/libs/dlib/dlib/sequence/../algs.h
+C:/libs/dlib/dlib/sequence/sequence_kernel_2.h
+C:/libs/dlib/dlib/sequence/sequence_kernel_abstract.h
+C:/libs/dlib/dlib/sequence/../algs.h
+C:/libs/dlib/dlib/sequence/sequence_kernel_c.h
+C:/libs/dlib/dlib/sequence/sequence_kernel_abstract.h
+C:/libs/dlib/dlib/sequence/../algs.h
+C:/libs/dlib/dlib/sequence/sequence_compare_1.h
+C:/libs/dlib/dlib/sequence/sequence_compare_abstract.h
+C:/libs/dlib/dlib/sequence/../algs.h
+C:/libs/dlib/dlib/sequence/sequence_sort_1.h
+C:/libs/dlib/dlib/sequence/sequence_sort_abstract.h
+C:/libs/dlib/dlib/sequence/../algs.h
+C:/libs/dlib/dlib/sequence/sequence_sort_2.h
+C:/libs/dlib/dlib/sequence/sequence_sort_abstract.h
+C:/libs/dlib/dlib/sequence/../algs.h
+C:/libs/dlib/dlib/algs.h
+C:/libs/dlib/dlib/optimization/optimization_stop_strategies.h
+C:/libs/dlib/dlib/optimization/../algs.h
+C:/libs/dlib/dlib/optimization/optimization_stop_strategies_abstract.h
+C:/libs/dlib/dlib/optimization/optimization_bobyqa.h
+C:/libs/dlib/dlib/optimization/optimization_bobyqa_abstract.h
+C:/libs/dlib/dlib/optimization/optimization_solve_qp_using_smo.h
+C:/libs/dlib/dlib/optimization/optimization_solve_qp_using_smo_abstract.h
+C:/libs/dlib/dlib/optimization/../unordered_pair.h
+C:/libs/dlib/dlib/optimization/optimization_solve_qp2_using_smo.h
+C:/libs/dlib/dlib/optimization/optimization_solve_qp2_using_smo_abstract.h
+C:/libs/dlib/dlib/optimization/../algs.h
+C:/libs/dlib/dlib/optimization/optimization_solve_qp3_using_smo.h
+C:/libs/dlib/dlib/optimization/optimization_solve_qp3_using_smo_abstract.h
+C:/libs/dlib/dlib/optimization/../algs.h
+C:/libs/dlib/dlib/optimization/optimization_oca.h
+C:/libs/dlib/dlib/optimization/optimization_oca_abstract.h
+C:/libs/dlib/dlib/optimization/optimization_trust_region.h
+C:/libs/dlib/dlib/optimization/optimization_trust_region_abstract.h
+C:/libs/dlib/dlib/optimization/optimization_least_squares.h
+C:/libs/dlib/dlib/optimization/optimization_least_squares_abstract.h
+C:/libs/dlib/dlib/optimization/max_cost_assignment.h
+C:/libs/dlib/dlib/optimization/max_cost_assignment_abstract.h
+C:/libs/dlib/dlib/optimization/max_sum_submatrix.h
+C:/libs/dlib/dlib/optimization/max_sum_submatrix_abstract.h
+C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/include/queue
+C:/libs/dlib/dlib/optimization/../geometry.h
+C:/libs/dlib/dlib/geometry/drectangle.h
+C:/libs/dlib/dlib/geometry/drectangle_abstract.h
+C:/libs/dlib/dlib/geometry/border_enumerator.h
+C:/libs/dlib/dlib/geometry/border_enumerator_abstract.h
+C:/libs/dlib/dlib/geometry/point_transforms.h
+C:/libs/dlib/dlib/geometry/point_transforms_abstract.h
+C:/libs/dlib/dlib/geometry/../algs.h
+C:/libs/dlib/dlib/geometry/line.h
+C:/libs/dlib/dlib/geometry/line_abstract.h
+C:/libs/dlib/dlib/geometry/polygon.h
+C:/libs/dlib/dlib/geometry/polygon_abstract.h
+C:/libs/dlib/dlib/optimization/find_max_factor_graph_nmplp.h
+C:/libs/dlib/dlib/optimization/find_max_factor_graph_nmplp_abstract.h
+C:/libs/dlib/dlib/optimization/find_max_factor_graph_viterbi.h
+C:/libs/dlib/dlib/optimization/find_max_factor_graph_viterbi_abstract.h
+C:/libs/dlib/dlib/optimization/find_max_parse_cky.h
+C:/libs/dlib/dlib/optimization/find_max_parse_cky_abstract.h
+C:/libs/dlib/dlib/optimization/isotonic_regression.h
+C:/libs/dlib/dlib/optimization/isotonic_regression_abstract.h
+C:/libs/dlib/dlib/statistics/lda.h
+C:/libs/dlib/dlib/statistics/lda_abstract.h
+C:/libs/dlib/dlib/statistics/../algs.h
+C:/libs/dlib/dlib/gui_widgets/fonts.h
+C:/libs/dlib/dlib/gui_widgets/fonts_abstract.h
+C:/libs/dlib/dlib/gui_widgets/../algs.h
+C:/libs/dlib/dlib/gui_widgets/../threads.h

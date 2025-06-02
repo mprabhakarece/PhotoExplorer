@@ -1,0 +1,657 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/dlib_build/dlib/dlib_autogen",
+	"CMAKE_BINARY_DIR" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/dlib_build/dlib",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/libs/dlib/dlib",
+	"CMAKE_EXECUTABLE" : "C:/Program Files/CMake/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/libs/dlib/dlib/CMakeLists.txt",
+		"C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/.qtc/package-manager/auto-setup.cmake",
+		"C:/libs/dlib/dlib/cmake_utils/set_compiler_specific_options.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/CheckTypeSize.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFile.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFileCXX.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/GNUInstallDirs.cmake",
+		"C:/libs/dlib/dlib/cmake_utils/release_build_by_default",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/CheckFunctionExists.cmake",
+		"C:/libs/dlib/dlib/cmake_utils/find_libpng.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindPNG.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindZLIB.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/SelectLibraryConfigurations.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageMessage.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageMessage.cmake",
+		"C:/libs/dlib/dlib/cmake_utils/check_if_neon_available.cmake",
+		"C:/libs/dlib/dlib/cmake_utils/find_libjpeg.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindJPEG.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/SelectLibraryConfigurations.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Program Files/CMake/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/PhotoExplorer",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/dlib_build/dlib/dlib_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "dlib_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"C:/libs/dlib/dlib/base64/base64_kernel_1.h",
+			"Mu",
+			"G62XQPZJK5/moc_base64_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/bigint/bigint_kernel_1.h",
+			"Mu",
+			"ZQVYE5T7P6/moc_bigint_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/bigint/bigint_kernel_2.h",
+			"Mu",
+			"ZQVYE5T7P6/moc_bigint_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/bit_stream/bit_stream_kernel_1.h",
+			"Mu",
+			"6ISJKNC36Y/moc_bit_stream_kernel_1.cpp",
+			null
+		],
+		[ "C:/libs/dlib/dlib/bsp/bsp.h", "Mu", "BJHT3JKFFZ/moc_bsp.cpp", null ],
+		[
+			"C:/libs/dlib/dlib/cuda/cpu_dlib.h",
+			"Mu",
+			"DOVMWUXH6C/moc_cpu_dlib.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/cuda/tensor_tools.h",
+			"Mu",
+			"DOVMWUXH6C/moc_tensor_tools.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/data_io/cifar.h",
+			"Mu",
+			"M7VRGMRRQW/moc_cifar.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/data_io/image_dataset_metadata.h",
+			"Mu",
+			"M7VRGMRRQW/moc_image_dataset_metadata.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/data_io/mnist.h",
+			"Mu",
+			"M7VRGMRRQW/moc_mnist.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/dir_nav/dir_nav_extensions.h",
+			"Mu",
+			"WFAD6Y6OQV/moc_dir_nav_extensions.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/dir_nav/dir_nav_kernel_1.h",
+			"Mu",
+			"WFAD6Y6OQV/moc_dir_nav_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/dir_nav/dir_nav_kernel_2.h",
+			"Mu",
+			"WFAD6Y6OQV/moc_dir_nav_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/entropy_decoder/entropy_decoder_kernel_1.h",
+			"Mu",
+			"GP3MZ3IHI3/moc_entropy_decoder_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/entropy_decoder/entropy_decoder_kernel_2.h",
+			"Mu",
+			"GP3MZ3IHI3/moc_entropy_decoder_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/entropy_encoder/entropy_encoder_kernel_1.h",
+			"Mu",
+			"BPZZUT2GYN/moc_entropy_encoder_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/entropy_encoder/entropy_encoder_kernel_2.h",
+			"Mu",
+			"BPZZUT2GYN/moc_entropy_encoder_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/libjpeg/jerror.h",
+			"Mu",
+			"HJBH56ILWU/moc_jerror.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/libpng/png.h",
+			"Mu",
+			"VQD7GCLKPB/moc_png.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/zlib/crc32.h",
+			"Mu",
+			"YZVOIX43KV/moc_crc32.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/zlib/deflate.h",
+			"Mu",
+			"YZVOIX43KV/moc_deflate.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/zlib/inffast.h",
+			"Mu",
+			"YZVOIX43KV/moc_inffast.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/zlib/inflate.h",
+			"Mu",
+			"YZVOIX43KV/moc_inflate.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/zlib/inftrees.h",
+			"Mu",
+			"YZVOIX43KV/moc_inftrees.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/zlib/trees.h",
+			"Mu",
+			"YZVOIX43KV/moc_trees.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/zlib/zutil.h",
+			"Mu",
+			"YZVOIX43KV/moc_zutil.cpp",
+			null
+		],
+		[ "C:/libs/dlib/dlib/fft/fft.h", "Mu", "G4USDFAO4E/moc_fft.cpp", null ],
+		[
+			"C:/libs/dlib/dlib/filtering/kalman_filter.h",
+			"Mu",
+			"LGNF3OVU5G/moc_kalman_filter.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/global_optimization/global_function_search.h",
+			"Mu",
+			"OWVWBK4GZH/moc_global_function_search.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_core/gui_core_kernel_1.h",
+			"Mu",
+			"DXJZ4QFHK3/moc_gui_core_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_core/gui_core_kernel_2.h",
+			"Mu",
+			"DXJZ4QFHK3/moc_gui_core_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_widgets/base_widgets.h",
+			"Mu",
+			"OHZZW4HCTJ/moc_base_widgets.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_widgets/canvas_drawing.h",
+			"Mu",
+			"OHZZW4HCTJ/moc_canvas_drawing.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_widgets/drawable.h",
+			"Mu",
+			"OHZZW4HCTJ/moc_drawable.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_widgets/fonts.h",
+			"Mu",
+			"OHZZW4HCTJ/moc_fonts.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_widgets/style.h",
+			"Mu",
+			"OHZZW4HCTJ/moc_style.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/gui_widgets/widgets.h",
+			"Mu",
+			"OHZZW4HCTJ/moc_widgets.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/image_loader/jpeg_loader.h",
+			"Mu",
+			"KFXTWDPTEO/moc_jpeg_loader.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/image_loader/png_loader.h",
+			"Mu",
+			"KFXTWDPTEO/moc_png_loader.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/image_saver/save_jpeg.h",
+			"Mu",
+			"IZNVI3IJ24/moc_save_jpeg.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/image_saver/save_png.h",
+			"Mu",
+			"IZNVI3IJ24/moc_save_png.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/linker/linker_kernel_1.h",
+			"Mu",
+			"22QF4AOPOL/moc_linker_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/logger/extra_logger_headers.h",
+			"Mu",
+			"6AY3GXVTTD/moc_extra_logger_headers.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/logger/logger_config_file.h",
+			"Mu",
+			"6AY3GXVTTD/moc_logger_config_file.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/logger/logger_kernel_1.h",
+			"Mu",
+			"6AY3GXVTTD/moc_logger_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/md5/md5_kernel_1.h",
+			"Mu",
+			"NNFCRC4EFN/moc_md5_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/misc_api/misc_api_kernel_1.h",
+			"Mu",
+			"INXGT54JUR/moc_misc_api_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/misc_api/misc_api_kernel_2.h",
+			"Mu",
+			"INXGT54JUR/moc_misc_api_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/server/server_http.h",
+			"Mu",
+			"ORNZQ2F6DW/moc_server_http.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/server/server_iostream.h",
+			"Mu",
+			"ORNZQ2F6DW/moc_server_iostream.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/server/server_kernel.h",
+			"Mu",
+			"ORNZQ2F6DW/moc_server_kernel.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/sockets/sockets_extensions.h",
+			"Mu",
+			"IQ7MVI3QRB/moc_sockets_extensions.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/sockets/sockets_kernel_1.h",
+			"Mu",
+			"IQ7MVI3QRB/moc_sockets_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/sockets/sockets_kernel_2.h",
+			"Mu",
+			"IQ7MVI3QRB/moc_sockets_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/sockstreambuf/sockstreambuf.h",
+			"Mu",
+			"4DEDGEMOVW/moc_sockstreambuf.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/sockstreambuf/sockstreambuf_unbuffered.h",
+			"Mu",
+			"4DEDGEMOVW/moc_sockstreambuf_unbuffered.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/stack_trace.h",
+			"Mu",
+			"EWIEGA46WW/moc_stack_trace.cpp",
+			null
+		],
+		[ "C:/libs/dlib/dlib/svm/auto.h", "Mu", "ZTDCHRWVEU/moc_auto.cpp", null ],
+		[
+			"C:/libs/dlib/dlib/test_for_odr_violations.h",
+			"Mu",
+			"EWIEGA46WW/moc_test_for_odr_violations.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/threads/async.h",
+			"Mu",
+			"ZXH2KM5ODR/moc_async.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/threads/multithreaded_object_extension.h",
+			"Mu",
+			"ZXH2KM5ODR/moc_multithreaded_object_extension.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/threads/thread_pool_extension.h",
+			"Mu",
+			"ZXH2KM5ODR/moc_thread_pool_extension.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/threads/threaded_object_extension.h",
+			"Mu",
+			"ZXH2KM5ODR/moc_threaded_object_extension.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/threads/threads_kernel_1.h",
+			"Mu",
+			"ZXH2KM5ODR/moc_threads_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/threads/threads_kernel_2.h",
+			"Mu",
+			"ZXH2KM5ODR/moc_threads_kernel_2.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/threads/threads_kernel_shared.h",
+			"Mu",
+			"ZXH2KM5ODR/moc_threads_kernel_shared.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/timer/timer.h",
+			"Mu",
+			"GMEEGBWBLC/moc_timer.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/tokenizer/tokenizer_kernel_1.h",
+			"Mu",
+			"PFJMRF2XLN/moc_tokenizer_kernel_1.cpp",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/unicode/unicode.h",
+			"Mu",
+			"SYLI7YBSQO/moc_unicode.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/dlib_build/dlib/dlib_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/dlib_build/dlib/dlib_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "DLIB_JPEG_STATIC", "WIN32" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/libs/dlib/dlib/external/libpng",
+		"C:/libs/dlib/dlib/external/zlib"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/dlib_build/dlib/CMakeFiles/dlib_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/6.8.2/msvc2022_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 8,
+	"SETTINGS_FILE" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release/dlib_build/dlib/CMakeFiles/dlib_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "C:/libs/dlib/dlib/base64/base64_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/bigint/bigint_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/bigint/bigint_kernel_2.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/bit_stream/bit_stream_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/bsp/bsp.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/cuda/cpu_dlib.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/cuda/tensor_tools.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/data_io/cifar.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/data_io/image_dataset_metadata.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/data_io/mnist.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/dir_nav/dir_nav_extensions.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/dir_nav/dir_nav_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/dir_nav/dir_nav_kernel_2.cpp", "Mu", null ],
+		[
+			"C:/libs/dlib/dlib/entropy_decoder/entropy_decoder_kernel_1.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/entropy_decoder/entropy_decoder_kernel_2.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/entropy_encoder/entropy_encoder_kernel_1.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/entropy_encoder/entropy_encoder_kernel_2.cpp",
+			"Mu",
+			null
+		],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jaricom.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcapimin.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcapistd.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcarith.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jccoefct.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jccolor.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcdctmgr.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jchuff.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcinit.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcmainct.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcmarker.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcmaster.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcomapi.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcparam.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcprepct.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jcsample.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdapimin.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdapistd.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdarith.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdatadst.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdatasrc.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdcoefct.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdcolor.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jddctmgr.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdhuff.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdinput.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdmainct.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdmarker.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdmaster.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdmerge.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdpostct.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jdsample.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jerror.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jfdctflt.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jfdctfst.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jfdctint.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jidctflt.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jidctfst.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jidctint.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jmemmgr.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jmemnobs.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jquant1.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jquant2.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libjpeg/jutils.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/arm/arm_init.c", "Mu", null ],
+		[
+			"C:/libs/dlib/dlib/external/libpng/arm/filter_neon_intrinsics.c",
+			"Mu",
+			null
+		],
+		[
+			"C:/libs/dlib/dlib/external/libpng/arm/palette_neon_intrinsics.c",
+			"Mu",
+			null
+		],
+		[ "C:/libs/dlib/dlib/external/libpng/png.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngerror.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngget.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngmem.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngpread.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngread.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngrio.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngrtran.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngrutil.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngset.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngtrans.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngwio.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngwrite.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngwtran.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/libpng/pngwutil.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/adler32.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/compress.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/crc32.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/deflate.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/gzclose.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/gzlib.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/gzread.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/gzwrite.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/infback.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/inffast.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/inflate.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/inftrees.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/trees.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/uncompr.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/external/zlib/zutil.c", "Mu", null ],
+		[ "C:/libs/dlib/dlib/fft/fft.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/filtering/kalman_filter.cpp", "Mu", null ],
+		[
+			"C:/libs/dlib/dlib/global_optimization/global_function_search.cpp",
+			"Mu",
+			null
+		],
+		[ "C:/libs/dlib/dlib/gui_core/gui_core_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/gui_core/gui_core_kernel_2.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/gui_widgets/base_widgets.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/gui_widgets/canvas_drawing.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/gui_widgets/drawable.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/gui_widgets/fonts.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/gui_widgets/style.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/gui_widgets/widgets.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/image_loader/jpeg_loader.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/image_loader/png_loader.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/image_saver/save_jpeg.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/image_saver/save_png.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/linker/linker_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/logger/extra_logger_headers.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/logger/logger_config_file.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/logger/logger_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/md5/md5_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/misc_api/misc_api_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/misc_api/misc_api_kernel_2.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/server/server_http.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/server/server_iostream.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/server/server_kernel.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/sockets/sockets_extensions.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/sockets/sockets_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/sockets/sockets_kernel_2.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/sockstreambuf/sockstreambuf.cpp", "Mu", null ],
+		[
+			"C:/libs/dlib/dlib/sockstreambuf/sockstreambuf_unbuffered.cpp",
+			"Mu",
+			null
+		],
+		[ "C:/libs/dlib/dlib/stack_trace.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/svm/auto.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/test_for_odr_violations.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/threads/async.cpp", "Mu", null ],
+		[
+			"C:/libs/dlib/dlib/threads/multithreaded_object_extension.cpp",
+			"Mu",
+			null
+		],
+		[ "C:/libs/dlib/dlib/threads/thread_pool_extension.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/threads/threaded_object_extension.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/threads/threads_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/threads/threads_kernel_2.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/threads/threads_kernel_shared.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/timer/timer.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/tokenizer/tokenizer_kernel_1.cpp", "Mu", null ],
+		[ "C:/libs/dlib/dlib/unicode/unicode.cpp", "Mu", null ]
+	],
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

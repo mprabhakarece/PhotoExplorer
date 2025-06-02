@@ -1,0 +1,5 @@
+in future we may create global ID for each face and
+procedure to avoid processing same image multiple times
+Display facelist only for current folder and its subfolder
+A main folder has multiple subfolder I choose a face all images should be displayed on current folder view
+Keep these things on mind and proceed

@@ -1,0 +1,165 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"build" : "dlib_build",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-dlib_build-Release-9bbb8ed3d9152f2afd5d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "C:/libs/dlib"
+				},
+				{
+					"build" : "dlib_build/dlib",
+					"jsonFile" : "directory-dlib_build.dlib-Release-5a4f99df405da392a1d6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 2,
+					"source" : "C:/libs/dlib/dlib",
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "PhotoBrowser",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						2
+					],
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "dlib_project",
+					"parentIndex" : 0
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "dlib",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "PhotoBrowser::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PhotoBrowser-Release-70180be5325e960fc5ba.json",
+					"name" : "PhotoBrowser",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PhotoBrowser_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PhotoBrowser_autogen-Release-8582a27591d687556e00.json",
+					"name" : "PhotoBrowser_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PhotoBrowser_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PhotoBrowser_autogen_timestamp_deps-Release-bb56ee1e74f5dc267d26.json",
+					"name" : "PhotoBrowser_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "dlib::@d05cc84ceee0d012af9a",
+					"jsonFile" : "target-dlib-Release-a9a6bf93e722fcceb7fc.json",
+					"name" : "dlib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "dlib_autogen::@d05cc84ceee0d012af9a",
+					"jsonFile" : "target-dlib_autogen-Release-a5071391e108e02f4b99.json",
+					"name" : "dlib_autogen",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "dlib_autogen_timestamp_deps::@d05cc84ceee0d012af9a",
+					"jsonFile" : "target-dlib_autogen_timestamp_deps-Release-62347907a1d8da4ebfb7.json",
+					"name" : "dlib_autogen_timestamp_deps",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/PhotoExplorer/build/Desktop_Qt_6_8_2_MSVC2022_64bit-Release",
+		"source" : "C:/PhotoExplorer"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
