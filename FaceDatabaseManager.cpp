@@ -5,15 +5,25 @@
 #include <QVariant>
 #include <QSqlRecord>
 #include <QDir>
+#include <QCoreApplication>
+#include <QThread>
+#include "embeddingUtils.h"
 
 FaceDatabaseManager::FaceDatabaseManager() {
-    QString dbPath = QDir::currentPath() + "/.cache/face_database.sqlite";
+    QString appPath = QCoreApplication::applicationDirPath();
+    QString cacheDirPath = appPath + "/.cache";
+    QString dbPath = cacheDirPath + "/face_database.sqlite";
 
-    QDir cacheDir(QDir::currentPath() + "/.cache");
+    // ✅ Create .cache directory if it doesn't exist
+    QDir cacheDir(cacheDirPath);
     if (!cacheDir.exists()) {
-        cacheDir.mkpath(".");
+        if (!cacheDir.mkpath(".")) {
+            qCritical() << "❌ Failed to create cache directory:" << cacheDirPath;
+            return;
+        }
     }
 
+    // ✅ Initialize database connection
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(dbPath);
 
@@ -22,9 +32,9 @@ FaceDatabaseManager::FaceDatabaseManager() {
         return;
     }
 
-    ensureTables();  // ✅ USE CORRECT TABLE SETUP
+    // ✅ Create tables if not exists
+    ensureTables();
 }
-
 
 bool FaceDatabaseManager::open(const QString& dbPath) {
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -38,7 +48,7 @@ bool FaceDatabaseManager::open(const QString& dbPath) {
 }
 
 void FaceDatabaseManager::ensureTables() {
-    QSqlQuery q;
+    QSqlQuery q(getThreadDb());
 
     q.exec(R"(
         CREATE TABLE IF NOT EXISTS face_embeddings (
@@ -68,12 +78,18 @@ void FaceDatabaseManager::ensureTables() {
             face_count INTEGER
         )
     )");
+
+    // ✅ Add these indexes to speed up WHERE queries
+    q.exec(R"(CREATE INDEX IF NOT EXISTS idx_face_mtime ON face_embeddings(image_path, mtime))");
+    q.exec(R"(CREATE INDEX IF NOT EXISTS idx_face_globalid ON face_embeddings(global_id))");
+    q.exec(R"(CREATE INDEX IF NOT EXISTS idx_face_folder ON face_embeddings(image_path))");
 }
+
 
 bool FaceDatabaseManager::addFace(const QString& imagePath, const QRect& rect,
                                   const std::vector<float>& embedding, float quality, qint64 mtime)
 {
-    QSqlQuery q;
+    QSqlQuery q(FaceDatabaseManager::getThreadDb());
     q.prepare(R"(
         INSERT INTO face_embeddings (image_path, face_rect, embedding, global_id, quality, mtime)
         VALUES (?, ?, ?, ?, ?, ?)
@@ -94,7 +110,7 @@ bool FaceDatabaseManager::addFace(const QString& imagePath, const QRect& rect,
 
 bool FaceDatabaseManager::faceAlreadyProcessed(const QString& imagePath, qint64 mtime)
 {
-    QSqlQuery q;
+    QSqlQuery q(FaceDatabaseManager::getThreadDb());
     q.prepare("SELECT COUNT(*) FROM face_embeddings WHERE image_path = ? AND mtime = ?");
     q.addBindValue(imagePath);
     q.addBindValue(mtime);
@@ -107,7 +123,7 @@ bool FaceDatabaseManager::faceAlreadyProcessed(const QString& imagePath, qint64 
 QList<FaceEntry> FaceDatabaseManager::getFacesForFolder(const QString& folderPath)
 {
     QList<FaceEntry> list;
-    QSqlQuery q;
+    QSqlQuery q(FaceDatabaseManager::getThreadDb());
     QString pathPrefix = folderPath.endsWith("/") ? folderPath : folderPath + "/";
     q.prepare("SELECT id, image_path, face_rect, global_id, quality FROM face_embeddings WHERE image_path LIKE ?");
     q.addBindValue(pathPrefix + "%");
@@ -132,7 +148,7 @@ QList<FaceEntry> FaceDatabaseManager::getFacesForFolder(const QString& folderPat
 QList<FaceEntry> FaceDatabaseManager::getFacesByGlobalId(const QString& globalId)
 {
     QList<FaceEntry> list;
-    QSqlQuery q;
+    QSqlQuery q(FaceDatabaseManager::getThreadDb());
     q.prepare("SELECT id, image_path, face_rect, quality FROM face_embeddings WHERE global_id = ?");
     q.addBindValue(globalId);
 
@@ -171,7 +187,8 @@ std::vector<float> FaceDatabaseManager::blobToEmbedding(const QByteArray& blob)
 std::vector<float> FaceDatabaseManager::getEmbeddingById(int id) {
     std::vector<float> embedding;
 
-    QSqlQuery query(db);
+    QSqlQuery query(getThreadDb());
+
     query.prepare("SELECT embedding FROM face_embeddings WHERE id = ?");
     query.addBindValue(id);
 
@@ -189,7 +206,7 @@ QString FaceDatabaseManager::assignOrFindGlobalID(const std::vector<float>& embe
     QByteArray embBlob = embeddingToBlob(embedding);
     QString matchedId;
 
-    QSqlQuery query(db);
+    QSqlQuery query(getThreadDb());
     query.prepare("SELECT global_id, avg_embedding FROM global_faces");
     if (query.exec()) {
         while (query.next()) {
@@ -198,12 +215,7 @@ QString FaceDatabaseManager::assignOrFindGlobalID(const std::vector<float>& embe
             std::vector<float> existingEmb = blobToEmbedding(existingBlob);
 
             // Compare with cosine similarity or L2 distance
-            float distSq = 0.0f;
-            for (size_t i = 0; i < embedding.size(); ++i) {
-                float diff = embedding[i] - existingEmb[i];
-                distSq += diff * diff;
-            }
-            float dist = std::sqrt(distSq);
+            float dist = l2Distance(embedding, existingEmb);
             if (dist < 0.5f) {
                 matchedId = QString::number(existingId);
                 break;
@@ -213,7 +225,7 @@ QString FaceDatabaseManager::assignOrFindGlobalID(const std::vector<float>& embe
 
     if (matchedId.isEmpty()) {
         // Generate new ID (or insert row to get ID)
-        QSqlQuery insert(db);
+        QSqlQuery insert(getThreadDb());
         insert.prepare("INSERT INTO global_faces (avg_embedding) VALUES (?)");
         insert.addBindValue(embBlob);
         if (insert.exec()) {
@@ -229,4 +241,136 @@ QString FaceDatabaseManager::assignOrFindGlobalID(const std::vector<float>& embe
 FaceDatabaseManager& FaceDatabaseManager::instance() {
     static FaceDatabaseManager inst;
     return inst;
+}
+
+QSqlDatabase FaceDatabaseManager::getThreadDb() {
+    QString connName = QString("face_db_%1").arg(reinterpret_cast<quintptr>(QThread::currentThread()));
+    if (!QSqlDatabase::contains(connName)) {
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", connName);
+        db.setDatabaseName(QCoreApplication::applicationDirPath() + "/.cache/face_database.sqlite");
+        if (!db.open()) {
+            qWarning() << "❌ Failed to open SQLite DB in thread:" << db.lastError().text();
+        } else {
+            qDebug() << "✅ Opened thread-safe DB for:" << connName;
+        }
+    }
+    return QSqlDatabase::database(connName);
+}
+
+QList<FaceEntry> FaceDatabaseManager::getFaceEntriesInFolder(const QString& folderPath) {
+    QList<FaceEntry> result;
+    QSqlQuery query(db);
+
+    QString modPath = folderPath;
+    modPath.replace("\\", "/");
+
+    // Only entries that are directly inside the folder (not in subfolders)
+    query.prepare(R"(
+        SELECT id, image_path, face_rect, global_id, quality
+        FROM face_embeddings
+        WHERE image_path LIKE :folder || '/%' AND image_path NOT LIKE :folder || '/%/%'
+    )");
+
+    query.bindValue(":folder", modPath);
+
+    if (query.exec()) {
+        while (query.next()) {
+            FaceEntry entry;
+            entry.id = query.value(0).toInt();
+            entry.imagePath = query.value(1).toString();
+
+            QStringList parts = query.value(2).toString().remove("[").remove("]").split(",");
+            if (parts.size() == 4) {
+                entry.faceRect = QRect(parts[0].toInt(), parts[1].toInt(), parts[2].toInt(), parts[3].toInt());
+            }
+
+            entry.globalId = query.value(3).toString();
+            entry.quality = query.value(4).toFloat();
+
+            result.append(entry);
+        }
+    } else {
+        qWarning() << "❌ Query failed in getFaceEntriesInFolder:" << query.lastError().text();
+    }
+
+    return result;
+}
+
+QList<FaceEntry> FaceDatabaseManager::getFaceEntriesInSubtree(const QString& rootPath) {
+    QList<FaceEntry> result;
+    QSqlQuery query(db);
+
+    QString modPath = rootPath;
+    modPath.replace("\\", "/");
+
+    query.prepare(R"(
+        SELECT id, image_path, face_rect, global_id, quality
+        FROM face_embeddings
+        WHERE image_path LIKE :root || '/%'
+    )");
+
+    query.bindValue(":root", modPath);
+
+    if (query.exec()) {
+        while (query.next()) {
+            FaceEntry entry;
+            entry.id = query.value(0).toInt();
+            entry.imagePath = query.value(1).toString();
+
+            QStringList parts = query.value(2).toString().remove("[").remove("]").split(",");
+            if (parts.size() == 4) {
+                entry.faceRect = QRect(parts[0].toInt(), parts[1].toInt(), parts[2].toInt(), parts[3].toInt());
+            }
+
+            entry.globalId = query.value(3).toString();
+            entry.quality = query.value(4).toFloat();
+
+            result.append(entry);
+        }
+    } else {
+        qWarning() << "❌ Query failed in getFaceEntriesInSubtree:" << query.lastError().text();
+    }
+
+    return result;
+}
+
+bool FaceDatabaseManager::addFacesBatch(const QList<FaceEntry>& entries, const QList<std::vector<float>>& embeddings) {
+    if (entries.size() != embeddings.size()) {
+        qWarning() << "❌ Mismatch between entries and embeddings!";
+        return false;
+    }
+
+    QSqlDatabase db = getThreadDb();
+    if (!db.transaction()) {
+        qWarning() << "⚠️ Failed to start transaction:" << db.lastError().text();
+        return false;
+    }
+
+    QSqlQuery q(db);
+    q.prepare(R"(
+        INSERT INTO face_embeddings (image_path, face_rect, embedding, global_id, quality, mtime)
+        VALUES (?, ?, ?, ?, ?, ?)
+    )");
+
+    for (int i = 0; i < entries.size(); ++i) {
+        const FaceEntry& entry = entries[i];
+        const std::vector<float>& emb = embeddings[i];
+
+        q.addBindValue(entry.imagePath);
+        q.addBindValue(QString("[%1,%2,%3,%4]")
+                           .arg(entry.faceRect.x()).arg(entry.faceRect.y())
+                           .arg(entry.faceRect.width()).arg(entry.faceRect.height()));
+        q.addBindValue(embeddingToBlob(emb));
+        q.addBindValue(entry.globalId);  // may be empty
+        q.addBindValue(entry.quality);
+        q.addBindValue(QFileInfo(entry.imagePath).lastModified().toSecsSinceEpoch());
+
+        if (!q.exec()) {
+            qWarning() << "❌ Failed to insert face:" << q.lastError().text();
+            db.rollback();
+            return false;
+        }
+    }
+
+    return db.commit();
 }

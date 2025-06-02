@@ -32,6 +32,8 @@ private:
 
     QStringList copiedFilePaths;
     bool showHiddenFolders = false;
+    std::atomic_bool scanAbortFlag = false;
+    std::atomic_bool thumbAbortFlag = false;
 
     bool cutMode = false;
     void pasteToCurrentFolder();
@@ -40,6 +42,14 @@ private:
     void performPaste();
     void showFolderViewContextMenu(const QPoint& pos);
     void showImagePopup(const QString& path);
+    void performScan(const QString& folder, bool recursive);
+    void addFaceToPersonList(
+        const std::vector<float>& embedding,
+        const QPixmap& thumb,
+        const QString& path,
+        const dlib::full_object_detection& shape,
+        double focus,
+        double symmetry);
 
     void loadDrives();
     void loadFolder(const QString &path);
@@ -51,9 +61,11 @@ private slots:
     void goBack();
     void refresh();
     void updateFaceList();
+    void loadFaceListFromDatabase();
     void updateFolderViewThumbnails(const QString& folder);
     void updateFolderViewCheckboxesFromFaceSelection();
-
+    void createNewFolder();
+    void abortCurrentScansTemporarily();
 
 protected:
     void keyPressEvent(QKeyEvent* event) override;

@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 
 # --- Qt6 ---
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Sql)
 
 # --- OpenCV ---
 set(OpenCV_DIR "C:/libs/opencv/build")  # ✅ Change this to your actual OpenCV path
@@ -36,12 +36,17 @@ add_executable(PhotoBrowser
     faceDetector.h
     FaceListItemDelegate.h
     FaceListItemDelegate.cpp
+    scanworker.h
+    FaceDatabaseManager.h
+    FaceDatabaseManager.cpp
+    FaceTypes.h
+    embeddingUtils.h
 )
-
 
 # --- Link libraries ---
 target_link_libraries(PhotoBrowser
     Qt6::Widgets
+    Qt6::Sql
     ${OpenCV_LIBS}
     dlib
 )

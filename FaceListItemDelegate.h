@@ -7,6 +7,7 @@
 #include <QStyleOptionViewItem>
 #include <QMouseEvent>
 #include <QEvent>
+#include "FaceTypes.h"
 
 class FaceListItemDelegate : public QStyledItemDelegate {
     Q_OBJECT
@@ -22,6 +23,7 @@ public:
     QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
     bool editorEvent(QEvent* event, QAbstractItemModel* model,
                      const QStyleOptionViewItem& option, const QModelIndex& index) override;
+    QList<FaceEntry> getFaceEntriesInSubtree(const QString& rootPath);
 
 private:
     ViewMode mode;

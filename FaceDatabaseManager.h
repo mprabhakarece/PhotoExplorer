@@ -22,11 +22,15 @@ public:
     bool faceAlreadyProcessed(const QString& imagePath, qint64 mtime);
 
     QString assignOrFindGlobalID(const std::vector<float>& embedding);
+    QList<FaceEntry> getFaceEntriesInFolder(const QString& folderPath);
+    QList<FaceEntry> getFaceEntriesInSubtree(const QString& rootPath);
+    bool addFacesBatch(const QList<FaceEntry>& entries, const QList<std::vector<float>>& embeddings);
 
 private:
     QSqlDatabase db;
     FaceDatabaseManager();
     void openDatabase();
+    QSqlDatabase getThreadDb();
     QByteArray embeddingToBlob(const std::vector<float>& emb);
     std::vector<float> blobToEmbedding(const QByteArray& blob);
 };

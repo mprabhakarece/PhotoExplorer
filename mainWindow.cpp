@@ -6,7 +6,8 @@
 #include <QVBoxLayout>
 #include <QDebug>
 #include <QPainter>
-#include <QtConcurrent/QtConcurrent>
+#include <QtConcurrent/QtConcurrentRun>
+#include <QTimer>
 #include <QSplitter>
 #include <QPushButton>
 #include <QCheckBox>
@@ -24,6 +25,7 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QDesktopServices>
+#include <QCoreApplication>
 
 #include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -31,6 +33,8 @@
 #include "mainwindow.h"
 #include "faceindexer.h"
 #include "FaceListItemDelegate.h"
+#include "FaceDatabaseManager.h"
+#include "embeddingUtils.h"
 
 FaceIndexer faceIndexer;
 
@@ -39,6 +43,64 @@ constexpr double matchDIST = 0.5f;
 
 constexpr double goodFocusThreshold = 100.0; // e.g. ideal Laplacian variance
 constexpr double focusTolerance = 25.0;      // how far below is still acceptable
+
+enum class ResizeMode {
+    Original,
+    Fit1024x1024,
+    Fit1280x720
+};
+
+cv::Mat resizeImageForDetection(const cv::Mat& input, ResizeMode mode,
+                                cv::Size& newSize, double& scaleX, double& scaleY) {
+    if (mode == ResizeMode::Original) {
+        newSize = input.size();
+        scaleX = 1.0;
+        scaleY = 1.0;
+        return input.clone();
+    }
+
+    int maxWidth, maxHeight;
+    if (mode == ResizeMode::Fit1024x1024) {
+        maxWidth = 1024;
+        maxHeight = 1024;
+    } else { // Fit1280x720
+        maxWidth = 1280;
+        maxHeight = 720;
+    }
+
+    int originalWidth = input.cols;
+    int originalHeight = input.rows;
+
+    double scale = std::min((double)maxWidth / originalWidth, (double)maxHeight / originalHeight);
+
+    int resizedWidth = static_cast<int>(originalWidth * scale);
+    int resizedHeight = static_cast<int>(originalHeight * scale);
+
+    cv::Mat resized;
+    cv::resize(input, resized, cv::Size(resizedWidth, resizedHeight), 0, 0, cv::INTER_AREA);
+
+    scaleX = (double)originalWidth / resizedWidth;
+    scaleY = (double)originalHeight / resizedHeight;
+    newSize = cv::Size(resizedWidth, resizedHeight);
+
+    return resized;
+}
+
+QString virtualCachePath(const QString& actualPath) {
+    QString base = QCoreApplication::applicationDirPath() + "/.cache";
+    QString relative = actualPath;
+
+#ifdef Q_OS_WIN
+    if (relative.length() >= 2 && relative[1] == ':') {
+        QString driveLetter = relative.left(1);
+        relative.remove(0, 2);  // remove "D:"
+        relative = driveLetter + "_/" + relative;
+    }
+#endif
+
+    relative = QDir::cleanPath(relative);  // ✅ normalize "//" or "../"
+    return base + "/" + relative;
+}
 
 std::vector<float> normalizeEmbedding(const std::vector<float>& emb) {
     float norm = std::sqrt(std::inner_product(emb.begin(), emb.end(), emb.begin(), 0.0f));
@@ -60,6 +122,28 @@ cv::Mat resizeToFixedHeight(const cv::Mat& input, cv::Size& newSize, double& sca
     scaleX = static_cast<double>(input.cols) / targetWidth;
     scaleY = static_cast<double>(input.rows) / targetHeight;
     newSize = cv::Size(targetWidth, targetHeight);
+    return resized;
+}
+
+cv::Mat resizeToFit1280x720(const cv::Mat& input, cv::Size& newSize, double& scaleX, double& scaleY) {
+    const int maxWidth = 1280;
+    const int maxHeight = 720;
+
+    int originalWidth = input.cols;
+    int originalHeight = input.rows;
+
+    double scale = std::min((double)maxWidth / originalWidth, (double)maxHeight / originalHeight);
+
+    int resizedWidth = static_cast<int>(originalWidth * scale);
+    int resizedHeight = static_cast<int>(originalHeight * scale);
+
+    cv::Mat resized;
+    cv::resize(input, resized, cv::Size(resizedWidth, resizedHeight), 0, 0, cv::INTER_AREA);
+
+    scaleX = (double)originalWidth / resizedWidth;
+    scaleY = (double)originalHeight / resizedHeight;
+    newSize = cv::Size(resizedWidth, resizedHeight);
+
     return resized;
 }
 
@@ -106,102 +190,119 @@ std::vector<FaceStats> personList;
 
 QPixmap getCachedThumbnail(const QString &imagePath, QSize size) {
     QFileInfo info(imagePath);
-    QDir cacheDir(info.dir().absolutePath() + "/.cache/thumbnails");
-    if (!cacheDir.exists()) cacheDir.mkpath(".");
-
-    QString thumbPath = cacheDir.absoluteFilePath(info.fileName() + ".thumb");
-    if (QFile::exists(thumbPath)) {
-        QPixmap cached(thumbPath);
-        if (!cached.isNull()) return cached;
+    if (!info.exists()) {
+        qWarning() << "❌ Input file does not exist:" << imagePath;
+        return QPixmap();
     }
 
-    // ✅ Use QImageReader to auto-handle EXIF orientation
+    QString cachePath = virtualCachePath(info.absolutePath()) + "/thumbnails";
+    QString thumbPath = QDir(cachePath).absoluteFilePath(info.fileName() + ".thumb");
+
+    qDebug() << "🔍 Thumbnail request for:" << imagePath;
+    qDebug() << "📁 Cache folder:" << cachePath;
+    qDebug() << "📄 Thumbnail file:" << thumbPath;
+
+    // ✅ Ensure cache folder is created in thread-safe way
+    static QMutex cacheMutex;
+    {
+        QMutexLocker locker(&cacheMutex);
+        QDir dir(cachePath);
+        if (!dir.exists()) {
+            bool created = dir.mkpath(".");
+            qDebug() << (created ? "✅ Cache folder created:" : "❌ Failed to create cache folder:") << cachePath;
+        }
+    }
+
+    // ✅ Load existing thumbnail if available
+    if (QFile::exists(thumbPath)) {
+        QPixmap cached(thumbPath);
+        if (!cached.isNull()) {
+            qDebug() << "📦 Loaded cached thumbnail from:" << thumbPath;
+            return cached;
+        } else {
+            qWarning() << "⚠️ Cached .thumb exists but failed to load:" << thumbPath;
+        }
+    }
+
+    // ✅ Load original image with EXIF rotation
     QImageReader reader(imagePath);
-    reader.setAutoTransform(true);  // <-- this is the key
+    reader.setAutoTransform(true);
     QImage image = reader.read();
+    if (image.isNull()) {
+        qWarning() << "❌ Failed to load image:" << imagePath << "| Error:" << reader.errorString();
+        return QPixmap();
+    }
 
-    if (image.isNull()) return QPixmap();  // Fallback
+    QPixmap thumb = QPixmap::fromImage(image.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    bool saved = thumb.save(thumbPath, "JPG");
 
-    QPixmap thumb = QPixmap::fromImage(
-        image.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation)
-        );
+    if (!saved) {
+        qWarning() << "❌ Failed to save thumbnail to:" << thumbPath;
+    } else {
+        qDebug() << "💾 Saved new thumbnail to:" << thumbPath;
+    }
 
-    thumb.save(thumbPath, "JPG");
     return thumb;
 }
-
-
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     setWindowTitle("Photo Explorer");
     resize(1200, 800);
 
+    // ==== Top Toolbar ====
     QToolBar *toolbar = addToolBar("Navigation");
-
     QWidget *toolbarWidget = new QWidget(this);
     QHBoxLayout *toolbarLayout = new QHBoxLayout(toolbarWidget);
     toolbarLayout->setContentsMargins(5, 2, 5, 2);
     toolbarLayout->setSpacing(8);
 
+    // Toolbar buttons
     QPushButton *backButton = new QPushButton("Back");
     QPushButton *homeButton = new QPushButton("Home");
-    QPushButton *photScanButton = new QPushButton("Photo Scan");
-    QCheckBox* showHiddenFoldersCheckbox = new QCheckBox("Show Hidden Folders");
-
-    QCheckBox *includeSubfoldersCheckbox = new QCheckBox("Include Subfolders");
-
+    QPushButton *photoScanButton = new QPushButton("Photo Scan");
     QPushButton *copyButton = new QPushButton("Copy Selected");
     QPushButton *pasteButton = new QPushButton("Paste Here");
     QPushButton *createFolderButton = new QPushButton("New Folder");
 
+    QCheckBox *showHiddenFoldersCheckbox = new QCheckBox("Show Hidden Folders");
+    QCheckBox *includeSubfoldersCheckbox = new QCheckBox("Include Subfolders");
     pathLabel = new QLabel("This PC");
 
+    // Add to layout
     toolbarLayout->addWidget(backButton);
     toolbarLayout->addWidget(homeButton);
     toolbarLayout->addWidget(pathLabel);
     toolbarLayout->addWidget(showHiddenFoldersCheckbox);
-
     toolbarLayout->addStretch();
-
     toolbarLayout->addWidget(createFolderButton);
     toolbarLayout->addWidget(copyButton);
     toolbarLayout->addWidget(pasteButton);
     toolbarLayout->addWidget(includeSubfoldersCheckbox);
-    toolbarLayout->addWidget(photScanButton);
-
+    toolbarLayout->addWidget(photoScanButton);
     toolbar->addWidget(toolbarWidget);
     toolbarWidget->setMinimumHeight(36);
 
-    connect(backButton, &QPushButton::clicked, this, &MainWindow::goBack);
-    connect(homeButton, &QPushButton::clicked, this, &MainWindow::goHome);
-    connect(includeSubfoldersCheckbox, &QCheckBox::toggled, this, [=](bool checked) {
-        includeSubfolders = checked;
-        statusBar()->showMessage("Include Subfolders " + QString(checked ? "enabled" : "disabled") + ". Click Refresh to apply.", 3000);
-    });
-
-    connect(photScanButton, &QPushButton::clicked, this, &MainWindow::refresh);
-
+    // ==== Split layout: Face List | Folder Area ====
     QSplitter *mainSplitter = new QSplitter(this);
     setCentralWidget(mainSplitter);
 
+    // === Left Face List ===
     faceList = new QListWidget(this);
     faceList->setViewMode(QListView::IconMode);
     faceList->setIconSize(QSize(84, 84));
-    faceList->setGridSize(QSize(90, 110)); // icon + label
+    faceList->setGridSize(QSize(90, 110));
     faceList->setSpacing(10);
     faceList->setResizeMode(QListView::Adjust);
     faceList->setMovement(QListView::Static);
     faceList->setMaximumWidth(200);
     faceList->setItemDelegate(new FaceListItemDelegate(FaceListItemDelegate::FaceListMode, this));
-
-    //faceList->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    //folderView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
     mainSplitter->addWidget(faceList);
 
+    // === Stack: Drives / FolderView ===
     stack = new QStackedWidget(this);
     mainSplitter->addWidget(stack);
 
+    // === Drive List View ===
     driveList = new QListWidget(this);
     driveList->setViewMode(QListView::IconMode);
     driveList->setIconSize(QSize(64, 64));
@@ -209,100 +310,82 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     driveList->setMovement(QListView::Static);
     driveList->setSpacing(20);
     driveList->setSelectionMode(QAbstractItemView::SingleSelection);
-    driveList->setFocusPolicy(Qt::StrongFocus);
     driveList->setFocus();
     stack->addWidget(driveList);
 
-    connect(driveList, &QListWidget::itemClicked, this, [this](QListWidgetItem *item) {
-        QString path = item->data(Qt::UserRole).toString();
-        navigateTo(path);
-    });
-
+    // === Folder View (Right side thumbnails) ===
     folderView = new QListWidget(this);
     folderView->setViewMode(QListView::IconMode);
     folderView->setIconSize(QSize(128, 128));
-    folderView->setGridSize(QSize(140, 172)); // 128 icon + 16 label + 8 spacing + safety
-    folderView->setSpacing(0);                // no gap between cells
+    folderView->setGridSize(QSize(140, 172));
+    folderView->setSpacing(0);
     folderView->setResizeMode(QListView::Adjust);
     folderView->setMovement(QListView::Static);
     folderView->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    folderView->setFocusPolicy(Qt::StrongFocus);
     folderView->setFocus();
     folderView->setItemDelegate(new FaceListItemDelegate(FaceListItemDelegate::FolderViewMode, this));
+    folderView->setContextMenuPolicy(Qt::CustomContextMenu);
     stack->addWidget(folderView);
 
-    // Right-click menu support
-    folderView->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(folderView, &QListWidget::customContextMenuRequested,
-            this, &MainWindow::showFolderViewContextMenu);
+    // ==== Connect UI Logic ====
 
-    connect(folderView, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem* item) {
-        QString path = item->data(Qt::UserRole).toString();
-        QFileInfo info(path);
+    // Toolbar buttons
+    connect(backButton, &QPushButton::clicked, this, &MainWindow::goBack);
+    connect(homeButton, &QPushButton::clicked, this, &MainWindow::goHome);
+    connect(photoScanButton, &QPushButton::clicked, this, &MainWindow::refresh);
+    connect(copyButton, &QPushButton::clicked, this, &MainWindow::performCopy);
+    connect(pasteButton, &QPushButton::clicked, this, &MainWindow::performPaste);
 
-        if (info.isDir()) {
-            navigateTo(info.absoluteFilePath());  // ✅ safely open folder
-        } else if (info.isFile()) {
-            showImagePopup(path);  // ✅ open image only if it's valid
-        }
+    connect(createFolderButton, &QPushButton::clicked, this, &MainWindow::createNewFolder);
+
+    connect(includeSubfoldersCheckbox, &QCheckBox::toggled, this, [this](bool checked) {
+        includeSubfolders = checked;
+        statusBar()->showMessage("Include Subfolders " + QString(checked ? "enabled" : "disabled") + ". Click Refresh to apply.", 3000);
+        loadFaceListFromDatabase();
     });
 
-    connect(faceList, &QListWidget::itemChanged,
-            this, &MainWindow::updateFolderViewCheckboxesFromFaceSelection);
-
-
-    connect(copyButton, &QPushButton::clicked, this, [this]() {
-        performCopy();
-    });
-
-    connect(pasteButton, &QPushButton::clicked, this, [this]() {
-        performPaste();
-    });
-
-    connect(createFolderButton, &QPushButton::clicked, this, [this]() {
-        if (currentPath.isEmpty()) {
-            statusBar()->showMessage("⚠️ No destination folder selected.", 2000);
-            return;
-        }
-
-        bool ok;
-        QString folderName = QInputDialog::getText(this, "Create New Folder",
-                                                   "Enter folder name:",
-                                                   QLineEdit::Normal,
-                                                   "New Folder", &ok);
-        if (!ok || folderName.trimmed().isEmpty()) return;
-
-        QString fullPath = currentPath + "/" + folderName;
-        if (QDir(fullPath).exists()) {
-            statusBar()->showMessage("⚠️ Folder already exists: " + folderName, 2000);
-            return;
-        }
-
-        if (!QDir(fullPath).exists()) {
-            QDir().mkpath(fullPath);
-            QTimer::singleShot(100, this, [this]() {
-                loadFolder(currentPath);
-            });
-        }
-
-        else {
-            statusBar()->showMessage("❌ Failed to create folder", 2000);
-        }
-    });
-
-    connect(showHiddenFoldersCheckbox, &QCheckBox::toggled, this, [=](bool checked) {
+    connect(showHiddenFoldersCheckbox, &QCheckBox::toggled, this, [this](bool checked) {
         showHiddenFolders = checked;
         loadFolder(currentPath);
     });
 
+    // Drive list click → navigate
+    connect(driveList, &QListWidget::itemClicked, this, [this](QListWidgetItem *item) {
+        navigateTo(item->data(Qt::UserRole).toString());
+    });
 
+    // Folder view double click → open folder or image
+    connect(folderView, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem* item) {
+        QString path = item->data(Qt::UserRole).toString();
+        QFileInfo info(path);
+        if (info.isDir()) {
+            navigateTo(info.absoluteFilePath());
+        } else if (info.isFile()) {
+            showImagePopup(path);
+        }
+    });
 
+    connect(folderView, &QListWidget::customContextMenuRequested,
+            this, &MainWindow::showFolderViewContextMenu);
+
+    // Face list → update checkboxes in folder view
+    connect(faceList, &QListWidget::itemChanged,
+            this, &MainWindow::updateFolderViewCheckboxesFromFaceSelection);
+
+    // ==== Startup View ====
     goHome();
 }
 
-MainWindow::~MainWindow() {}
+
+MainWindow::~MainWindow() {
+    scanAbortFlag = true;
+    thumbAbortFlag = true;
+}
+
 
 void MainWindow::goHome() {
+    abortCurrentScansTemporarily();
+    scanAbortFlag = true;
     pathLabel->setText("This PC");
     currentPath.clear();
     navHistory.clear();
@@ -311,6 +394,8 @@ void MainWindow::goHome() {
 }
 
 void MainWindow::goBack() {
+    abortCurrentScansTemporarily();
+    scanAbortFlag = true;
     if (navHistory.size() >= 2) {
         navHistory.removeLast();
         navigateTo(navHistory.last(), false);  // don't re-add
@@ -320,6 +405,8 @@ void MainWindow::goBack() {
 }
 
 void MainWindow::navigateTo(const QString &path, bool addToHistory) {
+    abortCurrentScansTemporarily();
+    scanAbortFlag = false;
     if (!QDir(path).exists()) return;
     currentPath = path;
     pathLabel->setText(path);
@@ -327,13 +414,14 @@ void MainWindow::navigateTo(const QString &path, bool addToHistory) {
         navHistory.append(path);
     loadFolder(path);
     stack->setCurrentWidget(folderView);
+    loadFaceListFromDatabase();
 }
 
 void MainWindow::loadDrives() {
     driveList->clear();
     QFileInfoList drives = QDir::drives();
     QFileIconProvider iconProvider;
-    for (const QFileInfo &drive : drives) {
+    for (const auto& drive : drives) {
         QListWidgetItem *item = new QListWidgetItem(iconProvider.icon(drive), drive.absoluteFilePath());
         item->setData(Qt::UserRole, drive.absoluteFilePath());
         driveList->addItem(item);
@@ -341,6 +429,12 @@ void MainWindow::loadDrives() {
 }
 
 void MainWindow::loadFolder(const QString &path) {
+    scanAbortFlag = false;
+    thumbAbortFlag = true;
+    QTimer::singleShot(100, this, [this]() {
+        thumbAbortFlag = false;
+    });
+
     folderView->clear();
     QDir dir(path);
     QFileInfoList entries = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
@@ -351,7 +445,7 @@ void MainWindow::loadFolder(const QString &path) {
         return a.fileName().toLower() < b.fileName().toLower();
     });
 
-    for (const QFileInfo &entry : entries) {
+    for (const auto& entry : entries) {
         QListWidgetItem *item = nullptr;
 
         if (entry.isDir()) {
@@ -361,7 +455,7 @@ void MainWindow::loadFolder(const QString &path) {
             bool hasImage = false;
             bool isEmpty = files.isEmpty();
 
-            for (const QFileInfo& file : files) {
+            for (const auto& file : files) {
                 QString ext = file.suffix().toLower();
                 if (ext == "jpg" || ext == "jpeg" || ext == "png" || ext == "bmp") {
                     hasImage = true;
@@ -375,47 +469,87 @@ void MainWindow::loadFolder(const QString &path) {
             // ✅ Set initial flags for folders
             item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         }
-
         else {
             QString ext = entry.suffix().toLower();
             if (!(ext == "jpg" || ext == "jpeg" || ext == "png" || ext == "bmp"))
                 continue;
 
-            // Show placeholder first, then load thumbnail async
-            item = new QListWidgetItem(QIcon(":/icons/placeholder.png"), entry.fileName());
-            item->setToolTip(entry.absoluteFilePath());
-            // ✅ Set initial flags without checkbox
-            item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+            QString imagePath = entry.absoluteFilePath();
+            qDebug() << "📥 Queued image:" << imagePath;
 
-            QFuture<void> _ = QtConcurrent::run([=]() {
-                QPixmap thumb = getCachedThumbnail(entry.absoluteFilePath(), QSize(128, 128));
-                if (!thumb.isNull()) {
-                    QMetaObject::invokeMethod(folderView, [=]() {
+            // Show placeholder first
+            QListWidgetItem* item = new QListWidgetItem(QIcon(":/icons/placeholder.png"), entry.fileName());
+            item->setToolTip(imagePath);
+            item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+            item->setData(Qt::UserRole, imagePath);
+
+            int itemRow = folderView->count();  // Capture position
+            folderView->addItem(item);          // Add it BEFORE launching the thread
+
+            QPointer<QListWidget> list = folderView;
+
+            QFuture<void> _ = QtConcurrent::run([this, imagePath, list, itemRow]() {
+                qDebug() << "🔄 [Thread] Generating thumbnail for:" << imagePath;
+
+                if (scanAbortFlag) {
+                    qDebug() << "⏹️ [Thread] Skipped due to scanAbortFlag:" << imagePath;
+                    return;
+                }
+
+                QPixmap thumb = getCachedThumbnail(imagePath, QSize(128, 128));
+
+                if (!scanAbortFlag && !thumb.isNull()) {
+                    QMetaObject::invokeMethod(list, [=]() {
+                        if (scanAbortFlag || !list) {
+                            qWarning() << "⚠️ Skipped UI update — scan aborted or list deleted for" << imagePath;
+                            return;
+                        }
+
+                        if (itemRow < 0 || itemRow >= list->count()) {
+                            qWarning() << "⚠️ Skipped UI update — invalid itemRow" << itemRow << "for" << imagePath;
+                            return;
+                        }
+
+                        QListWidgetItem* item = list->item(itemRow);
+                        if (!item) {
+                            qWarning() << "⚠️ Skipped UI update — item at row" << itemRow << "was null for" << imagePath;
+                            return;
+                        }
+
                         item->setIcon(QIcon(thumb));
-                    }, Qt::QueuedConnection);
+                        qDebug() << "✅ [UI] Set thumbnail for:" << imagePath;
+                    });
+
+                } else {
+                    qWarning() << "❌ [Thread] Failed to generate thumbnail for:" << imagePath;
                 }
             });
         }
 
-        item->setToolTip(entry.absoluteFilePath());
-        item->setData(Qt::UserRole, entry.absoluteFilePath());
-        folderView->addItem(item);
+        if (item && entry.isDir()) {
+            item->setToolTip(entry.absoluteFilePath());
+            item->setData(Qt::UserRole, entry.absoluteFilePath());
+            folderView->addItem(item);
+        }
+
     }
 }
 
 void MainWindow::refresh() {
+    if (scanAbortFlag) return;
     if (currentPath.isEmpty()) {
         goHome();
         return;
     }
 
+    abortCurrentScansTemporarily();
     navigateTo(currentPath);
     faceList->clear();
     personList.clear();
 
     statusBar()->showMessage("🔍 Detecting faces in background...", 3000);
 
-    QtConcurrent::run([this]() {
+    QFuture<void> future = QtConcurrent::run([this]() {
         QDirIterator it(currentPath,
                         QStringList() << "*.jpg" << "*.jpeg" << "*.png" << "*.bmp",
                         QDir::Files,
@@ -423,20 +557,22 @@ void MainWindow::refresh() {
 
         while (it.hasNext()) {
             QString path = it.next();
-            QString folder = QFileInfo(path).absolutePath();
-            QJsonArray folderLog = faceIndexer.getFaceLog(folder);
-
-            if (faceIndexer.hasFaceData(path, folderLog)) {
+            QFileInfo info(path);
+            qint64 mtime = info.lastModified().toSecsSinceEpoch();
+            if (faceIndexer.faceAlreadyProcessed(path, mtime)) {
                 qDebug() << "⏭️ Skipping cached:" << path;
                 continue;
             }
 
+
             cv::Mat fullRes = cv::imread(path.toStdString());
             if (fullRes.empty()) continue;
 
-            double scaleX = 1.0, scaleY = 1.0;
             cv::Size resizedSize;
-            cv::Mat matBGR = resizeToFixedHeight(fullRes, resizedSize, scaleX, scaleY);
+            double scaleX = 1.0, scaleY = 1.0;
+            ResizeMode mode = ResizeMode::Original; //Fit1280x720;  // 🔁 or Fit1024x1024 or Original
+            cv::Mat matBGR = resizeImageForDetection(fullRes, mode, resizedSize, scaleX, scaleY);
+
             if (matBGR.empty()) continue;
 
             auto faces = faceDetector.detectFaces(matBGR);
@@ -451,6 +587,7 @@ void MainWindow::refresh() {
                 auto embedding = faceDetector.getJitteredEmbedding(matBGR, rect);
                 if (embedding.empty()) continue;
                 //embedding = normalizeEmbedding(embedding);
+                qDebug() << "📸 In file:" << path << "📐 Face Size:" << rect.width() << "x" << rect.height();
 
                 if (rect.width() < 20 || rect.height() < 20) continue;
                 if (rect.width() > 1000 || rect.height() > 1000) continue;
@@ -494,19 +631,37 @@ void MainWindow::refresh() {
                                 personList[i].thumb = thumb;
                                 personList[i].imagePath = path;
 
-                                QMetaObject::invokeMethod(this, [=]() {
-                                    faceList->item(static_cast<int>(i))->setIcon(QIcon(thumb));
-                                    faceList->item(static_cast<int>(i))->setText(QString("Person %1 (%2)").arg(i + 1).arg(personList[i].count));
-                                }, Qt::QueuedConnection);
+                                if (!scanAbortFlag) {
+                                    QMetaObject::invokeMethod(this, [=]() {
+                                        if (!scanAbortFlag && faceList && i < faceList->count()) {
+                                            faceList->item(static_cast<int>(i))->setIcon(QIcon(thumb));
+                                            faceList->item(static_cast<int>(i))->setText(
+                                                QString("Person %1 (%2)").arg(i + 1).arg(personList[i].count));
+                                        }
+                                    }, Qt::QueuedConnection);
+                                }
+
                             } else {
-                                QMetaObject::invokeMethod(this, [=]() {
-                                    faceList->item(static_cast<int>(i))->setText(QString("Person %1 (%2)").arg(i + 1).arg(personList[i].count));
-                                }, Qt::QueuedConnection);
+                                if (!scanAbortFlag) {
+                                    QMetaObject::invokeMethod(this, [=]() {
+                                        if (!scanAbortFlag && faceList && i < faceList->count()) {
+                                            faceList->item(static_cast<int>(i))->setText(
+                                                QString("Person %1 (%2)").arg(i + 1).arg(personList[i].count));
+                                        }
+                                    }, Qt::QueuedConnection);
+                                }
+
                             }
                         } else {
-                            QMetaObject::invokeMethod(this, [=]() {
-                                faceList->item(static_cast<int>(i))->setText(QString("Person %1 (%2)").arg(i + 1).arg(personList[i].count));
-                            }, Qt::QueuedConnection);
+                            if (!scanAbortFlag) {
+                                QMetaObject::invokeMethod(this, [=]() {
+                                    if (!scanAbortFlag && faceList && i < faceList->count() && faceList->item(i)) {
+                                        faceList->item(static_cast<int>(i))->setText(
+                                            QString("Person %1 (%2)").arg(i + 1).arg(personList[i].count));
+                                    }
+                                }, Qt::QueuedConnection);
+                            }
+
                         }
                         break;
                     }
@@ -514,14 +669,18 @@ void MainWindow::refresh() {
 
                 if (!matched) {
                     personList.push_back({embedding, symmetry, focus, thumb, path});
-                    QMetaObject::invokeMethod(this, [=]() {
-                        QString label = QString("Person %1 (1)").arg(personList.size());
-                        QListWidgetItem* item = new QListWidgetItem(QIcon(thumb), label);
-                        item->setToolTip(path);
-                        item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-                        item->setCheckState(Qt::Unchecked);
-                        faceList->addItem(item);
-                    }, Qt::QueuedConnection);
+                    if (!scanAbortFlag) {
+                        QMetaObject::invokeMethod(this, [=]() {
+                            if (!scanAbortFlag && faceList) {
+                                QString label = QString("Person %1 (1)").arg(personList.size());
+                                QListWidgetItem* item = new QListWidgetItem(QIcon(thumb), label);
+                                item->setToolTip(path);
+                                item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+                                item->setCheckState(Qt::Unchecked);
+                                faceList->addItem(item);
+                            }
+                        }, Qt::QueuedConnection);
+                    }
                 }
 
                 faceRects.push_back(rect);
@@ -530,28 +689,47 @@ void MainWindow::refresh() {
                 focuses.push_back(focus);
             }
 
-            faceIndexer.addFaceData(path, faceRects, embeddings, symmetries, focuses);
-        }
+            QList<FaceEntry> faceEntries;
+            QList<std::vector<float>> embeddingList;
 
-        QMetaObject::invokeMethod(this, [this]() {
-            updateFaceList();
-            statusBar()->showMessage(QString("🧠 Faces detected: %1").arg(personList.size()), 2000);
-        }, Qt::QueuedConnection);
+            for (int i = 0; i < static_cast<int>(faceRects.size()); ++i) {
+                FaceEntry entry;
+                entry.imagePath = path;
+                entry.faceRect = faceRects[i];
+                entry.quality = focuses[i];
+                entry.globalId = "";  // leave empty for now
+                faceEntries.append(entry);
+                embeddingList.append(embeddings[i]);
+            }
+
+            FaceDatabaseManager::instance().addFacesBatch(faceEntries, embeddingList);
+
+        }
+        
+        if (!scanAbortFlag) {
+            QMetaObject::invokeMethod(this, [this]() {
+                if (!scanAbortFlag && faceList && statusBar()) {
+                    updateFaceList();
+                    statusBar()->showMessage(QString("🧠 Faces detected: %1").arg(personList.size()), 2000);
+                }
+            }, Qt::QueuedConnection);
+        }
 
     });
 }
 
 
 bool MainWindow::isSimilarFace(const std::vector<float>& a, const std::vector<float>& b, float threshold) {
-    if (a.size() != b.size()) return false;
-    float distSq = 0.0f;
-    for (size_t i = 0; i < a.size(); ++i) {
-        float diff = a[i] - b[i];
-        distSq += diff * diff;
-    }
-    float dist = std::sqrt(distSq);
-    return dist < threshold;  // e.g. threshold = 0.6 like Dlib
+    float dist = l2Distance(a, b);
+    bool isMatch = dist < threshold;
+
+    qDebug() << (isMatch ? "✅ Match" : "❌ No Match")
+             << " | Distance:" << dist
+             << " | Threshold:" << threshold;
+
+    return isMatch;
 }
+
 
 void MainWindow::showFolderViewContextMenu(const QPoint& pos) {
     QMenu menu(this);
@@ -594,25 +772,9 @@ void MainWindow::showFolderViewContextMenu(const QPoint& pos) {
     }
 
     else if (chosen == newFolderAction) {
-        bool ok;
-        QString folderName = QInputDialog::getText(this, "Create New Folder",
-                                                   "Enter folder name:",
-                                                   QLineEdit::Normal,
-                                                   "New Folder", &ok);
-        if (ok && !folderName.trimmed().isEmpty()) {
-            QString fullPath = currentPath + "/" + folderName;
-            if (QDir().mkpath(fullPath)) {
-                statusBar()->showMessage("✅ Created folder: " + folderName, 2000);
-                QTimer::singleShot(100, this, [this]() {
-                    loadFolder(currentPath);
-                });
-                QDir().refresh();
-            }
-             else {
-                QMessageBox::warning(this, "Already Exists", "A folder with that name already exists.");
-            }
-        }
+        createNewFolder();
     }
+
 }
 
 void MainWindow::showImagePopup(const QString& path) {
@@ -653,7 +815,7 @@ void MainWindow::pasteToCurrentFolder() {
 
     int overwriteCount = 0, skippedCount = 0;
 
-    for (const QString& src : copiedFilePaths) {
+    for (const auto& src : copiedFilePaths) {
         QFileInfo srcInfo(src);
         QString destPath = currentPath + "/" + srcInfo.fileName();
 
@@ -718,21 +880,38 @@ void MainWindow::pasteToCurrentFolder() {
         3000
         );
 
-    if (copiedAny)
+    if (copiedAny) {
+        abortCurrentScansTemporarily();  // ⬅️ Add this
         loadFolder(currentPath);
+    }
+
 }
 
 void MainWindow::performCopy() {
     copiedFilePaths.clear();
-    for (QListWidgetItem* item : folderView->selectedItems())
-        copiedFilePaths << item->data(Qt::UserRole).toString();
+
+    // If any face is selected, copy images associated with checked faces
+    bool anyFaceChecked = false;
+    for (int i = 0; i < faceList->count(); ++i) {
+        if (faceList->item(i)->checkState() == Qt::Checked) {
+            copiedFilePaths << personList[i].imagePath;
+            anyFaceChecked = true;
+        }
+    }
+
+    // Fallback to folderView selection if no face is checked
+    if (!anyFaceChecked) {
+        for (auto& item : folderView->selectedItems())
+            copiedFilePaths << item->data(Qt::UserRole).toString();
+    }
+
     cutMode = false;
     statusBar()->showMessage(QString("📋 Copied %1 files").arg(copiedFilePaths.size()), 2000);
 }
 
 void MainWindow::performCut() {
     copiedFilePaths.clear();
-    for (QListWidgetItem* item : folderView->selectedItems())
+    for (auto& item : folderView->selectedItems())
         copiedFilePaths << item->data(Qt::UserRole).toString();
     cutMode = true;
     statusBar()->showMessage(QString("✂️ Cut %1 files").arg(copiedFilePaths.size()), 2000);
@@ -776,7 +955,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
                                             QMessageBox::Yes | QMessageBox::No);
 
         if (confirm == QMessageBox::Yes) {
-            for (QListWidgetItem* item : selectedItems) {
+            for (auto& item : selectedItems) {
                 QString path = item->data(Qt::UserRole).toString();
                 QFile::remove(path);
             }
@@ -802,6 +981,17 @@ void MainWindow::updateFaceList() {
 
     for (int i = 0; i < static_cast<int>(personList.size()); ++i) {
         const auto& p = personList[i];
+
+        // Filter by includeSubfolders setting
+        QFileInfo imgInfo(p.imagePath);
+        QString parentPath = imgInfo.absolutePath();
+
+        bool inCurrentFolder = (parentPath == currentPath);
+        bool inSubfolder = parentPath.startsWith(currentPath + QDir::separator());
+
+        if (!includeSubfolders && !inCurrentFolder)
+            continue;
+
         QString label = QString("Person %1 (%2)").arg(i + 1).arg(p.count);
         QListWidgetItem* item = new QListWidgetItem(QIcon(p.thumb), label);
         item->setToolTip(p.imagePath);
@@ -822,66 +1012,136 @@ void MainWindow::updateFolderViewThumbnails(const QString& folder) {
             continue;
 
         // Run thumbnail loading in background
-        QtConcurrent::run([=]() {
+        QFuture<void> future = QtConcurrent::run([=]() {
             QPixmap thumb = getCachedThumbnail(imagePath, QSize(128, 128));
-            if (!thumb.isNull()) {
+            if (!scanAbortFlag && !thumb.isNull()) {
                 QMetaObject::invokeMethod(folderView, [=]() {
-                    item->setIcon(QIcon(thumb));
+                    if (!scanAbortFlag && folderView && item && folderView->indexFromItem(item).isValid()) {
+                        item->setIcon(QIcon(thumb));
+                    }
                 }, Qt::QueuedConnection);
             }
+
         });
     }
 }
 
 void MainWindow::updateFolderViewCheckboxesFromFaceSelection() {
     QVector<std::vector<float>> selectedEmbeddings;
+
     for (int i = 0; i < faceList->count(); ++i) {
         if (faceList->item(i)->checkState() == Qt::Checked) {
             selectedEmbeddings.push_back(personList[i].embedding);
         }
     }
 
-    // Reset all items
     for (int i = 0; i < folderView->count(); ++i) {
-        QListWidgetItem* imgItem = folderView->item(i);
-        if (QFileInfo(imgItem->data(Qt::UserRole).toString()).isFile()) {
-            imgItem->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-            imgItem->setCheckState(Qt::Unchecked);
-        }
-    }
-
-    if (selectedEmbeddings.isEmpty()) return;
-
-    for (int i = 0; i < folderView->count(); ++i) {
-        QListWidgetItem* imgItem = folderView->item(i);
-        const QString path = imgItem->data(Qt::UserRole).toString();
+        QListWidgetItem* item = folderView->item(i);
+        QString path = item->data(Qt::UserRole).toString();
         QFileInfo info(path);
-        if (info.isDir()) continue;
 
-        QJsonArray log = faceIndexer.getFaceLog(info.absolutePath());
+        if (!info.isFile()) continue;
 
-        for (const QJsonValue& val : log) {
-            QJsonObject entry = val.toObject();
-            if (entry["image"].toString() != info.fileName()) continue;
+        // Always allow user to manually check/uncheck
+        item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
+        item->setCheckState(Qt::Unchecked);  // default to unchecked
 
-            QJsonArray faces = entry["faces"].toArray();
-            for (const QJsonValue& faceVal : faces) {
-                QJsonObject faceObj = faceVal.toObject();
-                QJsonArray embArray = faceObj["embedding"].toArray();
-                std::vector<float> emb;
-                for (const auto& v : embArray)
-                    emb.push_back(v.toDouble());
+        // Skip matching logic if no face selected
+        if (selectedEmbeddings.isEmpty()) continue;
 
-                for (const auto& selected : selectedEmbeddings) {
-                    if (isSimilarFace(selected, emb, matchDIST)) {
-                        imgItem->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
-                        imgItem->setCheckState(Qt::Checked);
-                        goto matched;
-                    }
+        QList<FaceEntry> faces = includeSubfolders
+                                     ? FaceDatabaseManager::instance().getFaceEntriesInSubtree(currentPath)
+                                     : FaceDatabaseManager::instance().getFaceEntriesInFolder(info.absolutePath());
+
+        for (const FaceEntry& face : faces) {
+            if (QFileInfo(face.imagePath).fileName() != info.fileName())
+                continue;
+
+            std::vector<float> emb = FaceDatabaseManager::instance().getEmbeddingById(face.id);
+            for (const auto& selected : selectedEmbeddings) {
+                if (isSimilarFace(selected, emb, matchDIST)) {
+                    item->setCheckState(Qt::Checked);
+                    goto matched;
                 }
             }
         }
     matched:;
     }
+}
+
+void MainWindow::loadFaceListFromDatabase() {
+    personList.clear();
+
+    QList<FaceEntry> entries;
+    if (includeSubfolders) {
+        entries = FaceDatabaseManager::instance().getFaceEntriesInSubtree(currentPath);
+    } else {
+        entries = FaceDatabaseManager::instance().getFaceEntriesInFolder(currentPath);
+    }
+
+    for (const auto& face : entries) {
+        std::vector<float> emb = FaceDatabaseManager::instance().getEmbeddingById(face.id);
+        if (emb.empty()) continue;
+
+        QImage image(face.imagePath);
+        if (image.isNull()) continue;
+
+        QRect r = face.faceRect;
+        QImage faceImage = image.copy(r).scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        QPixmap thumb = QPixmap::fromImage(faceImage);
+
+        bool matched = false;
+        for (auto& p : personList) {
+            if (isSimilarFace(p.embedding, emb, matchDIST)) {
+                p.count++;
+                matched = true;
+                break;
+            }
+        }
+
+        if (!matched) {
+            personList.push_back({emb, 0.0, 0.0, thumb, face.imagePath});
+        }
+    }
+
+    updateFaceList();
+}
+
+void MainWindow::createNewFolder() {
+    if (currentPath.isEmpty()) {
+        statusBar()->showMessage("⚠️ No destination folder selected.", 2000);
+        return;
+    }
+
+    bool ok;
+    QString folderName = QInputDialog::getText(this, "Create New Folder",
+                                               "Enter folder name:", QLineEdit::Normal,
+                                               "New Folder", &ok);
+    if (!ok || folderName.trimmed().isEmpty()) return;
+
+    QString fullPath = QDir::cleanPath(currentPath + "/" + folderName);
+    if (QDir(fullPath).exists()) {
+        QMessageBox::warning(this, "Already Exists", "A folder with that name already exists.");
+    } else if (QDir().mkpath(fullPath)) {
+        statusBar()->showMessage("✅ Created folder: " + folderName, 2000);
+    } else {
+        QMessageBox::warning(this, "Error", "⚠️ Could not create folder.");
+    }
+
+    QTimer::singleShot(100, this, [this]() {
+        loadFolder(currentPath);
+    });
+}
+
+void MainWindow::abortCurrentScansTemporarily() {
+    scanAbortFlag = true;
+    thumbAbortFlag = true;
+    qDebug() << "⚠️ Aborting scans temporarily";
+
+    QTimer::singleShot(100, this, [this]() {
+        scanAbortFlag = false;
+        thumbAbortFlag = false;
+        qDebug() << "✅ Resuming scan operations";
+    });
 }
 
