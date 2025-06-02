@@ -1,0 +1,29 @@
+# Build and cache
+build/
+Backup/
+.cache/
+
+# Binaries and build output
+*.exe
+*.dll
+*.pdb
+*.o
+*.obj
+
+# Qt project temp
+*.qmake.stash
+*.pro.user*
+*.autosave
+
+# SQLite database
+*.sqlite
+
+# Thumbnails and logs
+*.thumb
+*.log
+
+# Python cache (if any)
+*.pyc
+
+# Visual Studio DB
+*.VC.db
